@@ -1,0 +1,22 @@
+# Cloudflare Workers/Pages static-assets headers.
+# .htaccess only applies on Apache/LiteSpeed (Hostinger) — this file is the
+# equivalent for the Cloudflare deployment (catering-tools-by-deecstudio).
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' https://api.fontshare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'
+
+/*.html
+  Cache-Control: no-cache, must-revalidate
+
+/*.css
+  Cache-Control: no-cache, must-revalidate
+
+/*.js
+  Cache-Control: no-cache, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=2592000
