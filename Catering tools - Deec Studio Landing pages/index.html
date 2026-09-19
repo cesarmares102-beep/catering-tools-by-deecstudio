@@ -16,10 +16,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-<link rel="stylesheet" href="styles.css?v=20260918p" />
+<link rel="stylesheet" href="styles.css?v=20260918aa" />
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skipLink">Saltar al contenido</a>
@@ -163,7 +164,173 @@
     <div class="hero-visual" aria-hidden="true">
       <div class="hero-mockup" data-mockup-tilt>
         <div class="mockup" data-mockup>
-          <img class="hero-visual-img" src="assets/mockup-cotizador.png" alt="" width="700" height="953" loading="eager" />
+          <div class="quote-builder-mockup">
+           <div class="qb-shell">
+            <aside class="qb-sidebar">
+              <div class="qb-brand">
+                <span class="qb-brand-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-8H7v8M7 3v5h13" /><path d="M4 3h16v18H4z" /></svg></span>
+                <div>
+                  <div class="qb-brand-name">Lebanquet</div>
+                  <div class="qb-brand-sub">Event Quoting Tool</div>
+                </div>
+              </div>
+              <nav class="qb-nav">
+                <div class="qb-nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>New quote</div>
+                <div class="qb-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg>Quotes</div>
+                <div class="qb-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>Clients</div>
+                <div class="qb-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>Services</div>
+                <div class="qb-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>Settings</div>
+              </nav>
+              <div class="qb-sidebar-footer">
+                <div class="qb-sidebar-footer-name">CateringTools</div>
+                <div class="qb-sidebar-footer-sub">Specialized quoting tool</div>
+              </div>
+            </aside>
+            <div class="qb-main">
+            <div class="qb-topbar">
+              <div class="qb-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.3-4.3" /></svg>Search services...</div>
+              <div class="qb-topbar-spacer"></div>
+              <div class="qb-autosaved"><span class="qb-autosaved-dot"></span>Autosaved</div>
+              <div class="qb-btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>New quote</div>
+            </div>
+
+            <div class="qb-page">
+              <p class="qb-eyebrow">Catering quote builder</p>
+              <div class="qb-page-header-row">
+                <h3 class="qb-page-title">New quote</h3>
+                <span class="qb-folio-badge">PRE-202609-0073</span>
+              </div>
+              <p class="qb-page-subtitle">Fill in the details, choose your services, and generate a professional quote.</p>
+
+              <div class="qb-settings-bar">
+                <div class="qb-settings-field">
+                  <span class="qb-settings-label">Market</span>
+                  <div class="qb-fake-select"><svg class="qb-flag-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#B22234" /><rect y="1.08" width="20" height="1.08" fill="#fff" /><rect y="3.23" width="20" height="1.08" fill="#fff" /><rect y="5.38" width="20" height="1.08" fill="#fff" /><rect y="7.54" width="20" height="1.08" fill="#fff" /><rect y="9.69" width="20" height="1.08" fill="#fff" /><rect y="11.85" width="20" height="1.08" fill="#fff" /><rect width="8.6" height="7.54" fill="#3C3B6E" /></svg>Estados Unidos</div>
+                </div>
+                <div class="qb-settings-field">
+                  <span class="qb-settings-label">Language</span>
+                  <div class="qb-fake-select"><svg class="qb-flag-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#B22234" /><rect y="1.08" width="20" height="1.08" fill="#fff" /><rect y="3.23" width="20" height="1.08" fill="#fff" /><rect y="5.38" width="20" height="1.08" fill="#fff" /><rect y="7.54" width="20" height="1.08" fill="#fff" /><rect y="9.69" width="20" height="1.08" fill="#fff" /><rect y="11.85" width="20" height="1.08" fill="#fff" /><rect width="8.6" height="7.54" fill="#3C3B6E" /></svg>English</div>
+                </div>
+                <div class="qb-settings-field">
+                  <span class="qb-settings-label">Currency</span>
+                  <div class="qb-fake-select"><svg class="qb-flag-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#B22234" /><rect y="1.08" width="20" height="1.08" fill="#fff" /><rect y="3.23" width="20" height="1.08" fill="#fff" /><rect y="5.38" width="20" height="1.08" fill="#fff" /><rect y="7.54" width="20" height="1.08" fill="#fff" /><rect y="9.69" width="20" height="1.08" fill="#fff" /><rect y="11.85" width="20" height="1.08" fill="#fff" /><rect width="8.6" height="7.54" fill="#3C3B6E" /></svg>USD</div>
+                </div>
+              </div>
+
+              <div class="qb-stepper">
+                <div class="qb-step">
+                  <span class="qb-step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                  <span class="qb-step-label">Customer</span>
+                </div>
+                <div class="qb-step">
+                  <span class="qb-step-connector done"></span>
+                  <span class="qb-step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                  <span class="qb-step-label">Event</span>
+                </div>
+                <div class="qb-step">
+                  <span class="qb-step-connector done"></span>
+                  <span class="qb-step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                  <span class="qb-step-label">Services</span>
+                </div>
+                <div class="qb-step">
+                  <span class="qb-step-connector done"></span>
+                  <span class="qb-step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                  <span class="qb-step-label">Custom.</span>
+                </div>
+                <div class="qb-step">
+                  <span class="qb-step-connector done"></span>
+                  <span class="qb-step-circle current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg></span>
+                  <span class="qb-step-label">Review</span>
+                </div>
+                <div class="qb-step">
+                  <span class="qb-step-connector"></span>
+                  <span class="qb-step-circle pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg></span>
+                  <span class="qb-step-label qb-faint">Quote</span>
+                </div>
+              </div>
+
+              <div class="qb-cards">
+                <div class="qb-card">
+                  <div class="qb-card-header">
+                    <span class="qb-card-icon done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <div class="qb-card-text">
+                      <p class="qb-card-title">Customer Information</p>
+                      <p class="qb-card-summary">Ana &amp; Robert · 555 123 45 56</p>
+                    </div>
+                    <span class="qb-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg></span>
+                  </div>
+                </div>
+                <div class="qb-card">
+                  <div class="qb-card-header">
+                    <span class="qb-card-icon done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <div class="qb-card-text">
+                      <p class="qb-card-title">Event</p>
+                      <p class="qb-card-summary">Boda · September 18, 2026 · 150 guests</p>
+                    </div>
+                    <span class="qb-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg></span>
+                  </div>
+                </div>
+                <div class="qb-card">
+                  <div class="qb-card-header">
+                    <span class="qb-card-icon done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <div class="qb-card-text">
+                      <p class="qb-card-title">Services</p>
+                      <p class="qb-card-summary">Package Premium · Servicio emplazado</p>
+                    </div>
+                    <span class="qb-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg></span>
+                  </div>
+                </div>
+
+                <div class="qb-card">
+                  <div class="qb-card-header">
+                    <span class="qb-card-icon current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg></span>
+                    <div class="qb-card-text">
+                      <p class="qb-card-title">Review</p>
+                      <p class="qb-card-summary">Full summary and final calculation.</p>
+                    </div>
+                    <span class="qb-card-chevron qb-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg></span>
+                  </div>
+                  <div class="qb-card-content">
+                    <div class="qb-section">
+                      <div class="qb-section-title-row">
+                        <span class="qb-section-label">Client and event</span>
+                        <span class="qb-section-rule"></span>
+                      </div>
+                      <dl class="qb-info-grid">
+                        <div class="qb-info-item"><dt>Client</dt><dd>Ana &amp; Robert</dd></div>
+                        <div class="qb-info-item"><dt>Type</dt><dd>Boda</dd></div>
+                        <div class="qb-info-item"><dt>Date</dt><dd>Sep 18, 2026</dd></div>
+                        <div class="qb-info-item"><dt>Guests</dt><dd>150</dd></div>
+                      </dl>
+                    </div>
+                    <div class="qb-section">
+                      <div class="qb-section-title-row">
+                        <span class="qb-section-label">Services</span>
+                        <span class="qb-section-rule"></span>
+                      </div>
+                      <div class="qb-services-list">
+                        <div class="qb-service-row"><span class="qb-service-name">Package Premium</span><span class="qb-service-price">$133,500.00</span></div>
+                        <div class="qb-service-row"><span class="qb-service-name">Meseros adicionales &times; 6</span><span class="qb-service-price">$4,800.00</span></div>
+                      </div>
+                    </div>
+                    <div class="qb-section">
+                      <div class="qb-breakdown">
+                        <div class="qb-breakdown-row"><span>Subtotal</span><span class="qb-val">$138,300.00</span></div>
+                        <div class="qb-breakdown-row"><span>Discount</span><span class="qb-val qb-faint-val">Not applicable</span></div>
+                        <div class="qb-breakdown-row"><span>Sales Tax (14%)</span><span class="qb-val">$19,362.00</span></div>
+                      </div>
+                      <div class="qb-total-block">
+                        <span class="qb-total-label">Total</span>
+                        <span class="qb-total-value">$138,300.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+           </div>
+          </div>
         </div>
         <div class="mockup-glow" aria-hidden="true"></div>
       </div>
@@ -278,7 +445,116 @@
           </div>
           <div class="transform-digital">
             <div class="mockup">
-              <img class="hero-visual-img" src="assets/mockup-quote.png" alt="" width="700" height="1230" loading="lazy" />
+              <div class="quote-doc-mockup">
+                <div class="qd-header">
+                  <div class="qd-header-left">
+                    <span class="qd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-8H7v8M7 3v5h13" /><path d="M4 3h16v18H4z" /></svg></span>
+                    <div>
+                      <p class="qd-business-name">Lebanquet Catering</p>
+                      <p class="qd-tagline">BANQUETES Y EVENTOS ESPECIALES</p>
+                    </div>
+                  </div>
+                  <div class="qd-header-right">
+                    <p class="qd-quote-abbrev">COT.</p>
+                    <p class="qd-quote-number">PRE-202609-0073</p>
+                    <p class="qd-issue-date">Emisión: 18 sep 2026</p>
+                    <p class="qd-valid-for">Válida por 15 días</p>
+                  </div>
+                </div>
+                <div class="qd-contact-line">55 8123 4500 · contacto@lebanquet.com</div>
+
+                <div class="qd-section">
+                  <div class="qd-section-title-row">
+                    <span class="qd-section-label">Información del evento</span>
+                    <span class="qd-section-rule"></span>
+                  </div>
+                  <dl class="qd-info-grid">
+                    <div class="qd-info-item"><dt>Cliente</dt><dd>Ana y Roberto Fernández</dd></div>
+                    <div class="qd-info-item"><dt>Tipo de evento</dt><dd>Boda</dd></div>
+                    <div class="qd-info-item"><dt>Fecha</dt><dd>18 sep 2026</dd></div>
+                    <div class="qd-info-item"><dt>Invitados</dt><dd>150 personas</dd></div>
+                    <div class="qd-info-item"><dt>Ubicación</dt><dd>Jardín Los Encinos, CDMX</dd></div>
+                  </dl>
+                </div>
+
+                <div class="qd-section">
+                  <div class="qd-section-title-row">
+                    <span class="qd-section-label">Servicios cotizados</span>
+                    <span class="qd-section-rule"></span>
+                  </div>
+                  <table class="qd-table">
+                    <thead>
+                      <tr>
+                        <th class="qd-num">#</th>
+                        <th>Servicio</th>
+                        <th class="qd-center qd-col-qty">Cant.</th>
+                        <th class="qd-right qd-amount">Importe</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="qd-num">1</td>
+                        <td class="qd-name">Paquete Premium</td>
+                        <td class="qd-center qd-col-qty">150</td>
+                        <td class="qd-amount">$133,500.00</td>
+                      </tr>
+                      <tr>
+                        <td class="qd-num">2</td>
+                        <td class="qd-name">Meseros adicionales</td>
+                        <td class="qd-center qd-col-qty">6</td>
+                        <td class="qd-amount">$4,800.00</td>
+                      </tr>
+                      <tr>
+                        <td class="qd-num">3</td>
+                        <td class="qd-name">Decoración floral</td>
+                        <td class="qd-center qd-col-qty">1</td>
+                        <td class="qd-amount">$8,500.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="qd-includes">Incluye: banquete completo, barra libre, mobiliario y personal de servicio</p>
+                </div>
+
+                <div class="qd-section">
+                  <div class="qd-section-title-row">
+                    <span class="qd-section-label">Resumen financiero</span>
+                    <span class="qd-section-rule"></span>
+                  </div>
+                  <div class="qd-breakdown">
+                    <div class="qd-breakdown-row"><span>Subtotal</span><span class="qd-val">$146,800.00</span></div>
+                    <div class="qd-breakdown-row"><span>Descuento (10%)</span><span class="qd-val qd-discount">- $14,680.00</span></div>
+                    <div class="qd-breakdown-row"><span>IVA (16%)</span><span class="qd-val">$21,139.20</span></div>
+                  </div>
+                  <div class="qd-total-block">
+                    <p class="qd-total-label">Total</p>
+                    <p class="qd-total-value">$153,259.20 MXN</p>
+                  </div>
+                </div>
+
+                <div class="qd-section">
+                  <div class="qd-payment-card">
+                    <p class="qd-payment-title">Condiciones de pago</p>
+                    <div class="qd-payment-item">
+                      <p class="qd-payment-item-label">Anticipo requerido (50%)</p>
+                      <p class="qd-payment-item-value">$76,629.60</p>
+                    </div>
+                    <div class="qd-payment-item">
+                      <p class="qd-payment-item-label">Saldo pendiente</p>
+                      <p class="qd-payment-item-value qd-dark">$76,629.60</p>
+                    </div>
+                    <p class="qd-valid-until-label">Fecha límite de pago</p>
+                    <p class="qd-valid-until-value">3 oct 2026</p>
+                  </div>
+                </div>
+
+                <div class="qd-footer">
+                  <div>
+                    <p class="qd-footer-name">Lebanquet Catering</p>
+                    <p class="qd-footer-contact">55 8123 4500 · contacto@lebanquet.com</p>
+                  </div>
+                  <p class="qd-footer-note">Gracias por confiar en nosotros</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -323,8 +599,104 @@
         <p class="deseo-copy lede" data-i18n="deseo.lede">Menos cálculo. Más acción.</p>
       </div>
 
-      <div class="problema-visual" data-reveal data-reveal-delay="2" aria-hidden="true">
-        <img class="problema-visual-img" src="assets/mockup-review.png" alt="" width="760" height="813" loading="lazy" />
+      <div class="problema-visual review-mockup-wrap" data-reveal data-reveal-delay="2" aria-hidden="true">
+        <div class="review-mockup">
+          <div class="rm-header">
+            <span class="rm-step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+            </span>
+            <div class="rm-header-text">
+              <h3 class="rm-step-title">Revisar</h3>
+              <p class="rm-step-desc">Confirma los detalles antes de generar la cotización</p>
+            </div>
+            <span class="rm-chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+            </span>
+          </div>
+
+          <div class="rm-content">
+            <div class="rm-section">
+              <div class="rm-section-title-row">
+                <span class="rm-section-label">Cliente y evento</span>
+                <span class="rm-section-rule"></span>
+              </div>
+              <dl class="rm-info-grid">
+                <div class="rm-info-item"><dt>Cliente</dt><dd>Ana y Roberto Fernández</dd></div>
+                <div class="rm-info-item"><dt>Tipo de evento</dt><dd>Boda</dd></div>
+                <div class="rm-info-item"><dt>Fecha</dt><dd>14 nov 2026</dd></div>
+                <div class="rm-info-item"><dt>Invitados</dt><dd>120 personas</dd></div>
+                <div class="rm-info-item"><dt>Ubicación</dt><dd>Jardín Los Encinos, CDMX</dd></div>
+              </dl>
+            </div>
+
+            <div class="rm-section">
+              <div class="rm-section-title-row">
+                <span class="rm-section-label">Servicios</span>
+                <span class="rm-section-rule"></span>
+              </div>
+              <ul class="rm-services-list">
+                <li class="rm-service-row">
+                  <div>
+                    <div class="rm-service-name">Paquete Premium</div>
+                    <div class="rm-service-meta">120 invitados · Incluye banquete, barra libre y mobiliario</div>
+                  </div>
+                  <div class="rm-service-price">$96,000.00</div>
+                </li>
+                <li class="rm-service-row">
+                  <div>
+                    <div class="rm-service-name">Decoración floral</div>
+                    <div class="rm-service-meta">1 servicio</div>
+                  </div>
+                  <div class="rm-service-price">$8,500.00</div>
+                </li>
+                <li class="rm-service-row">
+                  <div>
+                    <div class="rm-service-name">DJ y sonido</div>
+                    <div class="rm-service-meta">1 servicio</div>
+                  </div>
+                  <div class="rm-service-price">$6,200.00</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rm-section">
+              <div class="rm-section-title-row">
+                <span class="rm-section-label">Resumen financiero</span>
+                <span class="rm-section-rule"></span>
+              </div>
+              <div class="rm-summary-columns">
+                <div>
+                  <div class="rm-breakdown">
+                    <div class="rm-breakdown-row"><span>Subtotal</span><span class="rm-val">$110,700.00</span></div>
+                    <div class="rm-breakdown-row"><span>Descuento (10%)</span><span class="rm-val rm-discount">- $11,070.00</span></div>
+                    <div class="rm-breakdown-row"><span>IVA (16%)</span><span class="rm-val">$15,940.80</span></div>
+                  </div>
+                  <div class="rm-total-block">
+                    <p class="rm-total-label">Total</p>
+                    <p class="rm-total-value">$115,570.80 MXN</p>
+                  </div>
+                </div>
+                <div class="rm-payment-card">
+                  <p class="rm-payment-title">Condiciones de pago</p>
+                  <div class="rm-payment-item">
+                    <p class="rm-payment-item-label">Anticipo requerido (50%)</p>
+                    <p class="rm-payment-item-value">$57,785.40</p>
+                  </div>
+                  <div class="rm-payment-item">
+                    <p class="rm-payment-item-label">Saldo pendiente</p>
+                    <p class="rm-payment-item-value rm-dark">$57,785.40</p>
+                  </div>
+                  <div class="rm-payment-due">
+                    <p class="rm-payment-item-label">Fecha límite de pago</p>
+                    <p class="rm-payment-due-value">30 sep 2026</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rm-continue-btn">Confirmar y continuar</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -888,8 +1260,8 @@
   </div>
 </footer>
 
-<script defer src="lib/manifest.js?v=20260918p"></script>
-<script defer src="lib/i18n.js?v=20260918p"></script>
-<script defer src="main.js?v=20260918p"></script>
+<script defer src="lib/manifest.js?v=20260918aa"></script>
+<script defer src="lib/i18n.js?v=20260918aa"></script>
+<script defer src="main.js?v=20260918aa"></script>
 </body>
 </html>
