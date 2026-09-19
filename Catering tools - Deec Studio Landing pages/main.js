@@ -15,8 +15,8 @@
   }
 
   /* -------------------------------------------------------------
-     i18n — scoped to nav / popups only (sections' copy stays ES-only
-     per the approved brief). Defaults to "es".
+     i18n — drives every [data-i18n] node on the page (nav, sections,
+     FAQ, popups). Defaults to "es".
      ------------------------------------------------------------- */
   var I18N = window.__I18N__ || { es: {}, en: {} };
   var currentLang = "es";
@@ -146,13 +146,13 @@
         backdrop.classList.add("is-open");
       });
       toggle.setAttribute("aria-expanded", "true");
-      toggle.setAttribute("aria-label", "Cerrar menú");
+      toggle.setAttribute("aria-label", t("a11y.closeMenu"));
     }
     function close() {
       panel.classList.remove("is-open");
       backdrop.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Abrir menú");
+      toggle.setAttribute("aria-label", t("a11y.openMenu"));
       setTimeout(function () {
         panel.hidden = true;
         backdrop.hidden = true;
@@ -173,18 +173,28 @@
   }
 
   /* -------------------------------------------------------------
-     Language toggle — sección 1.6 / i18n scoped to nav + popups
+     Language toggle — sección 1.6
      ------------------------------------------------------------- */
   function applyLanguage() {
     document.documentElement.setAttribute("lang", currentLang);
     $$("[data-i18n]").forEach(function (el) {
       el.innerHTML = t(el.getAttribute("data-i18n"));
     });
+    $$("[data-i18n-aria]").forEach(function (el) {
+      el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria")));
+    });
     $$("[data-lang]").forEach(function (btn) {
       var active = btn.getAttribute("data-lang") === currentLang;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
+    // Menu toggle has two labels depending on open/closed state, not just
+    // language — keep it in sync with whichever state it's currently in.
+    var menuToggle = $("[data-menu-toggle]");
+    if (menuToggle) {
+      var menuOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-label", t(menuOpen ? "a11y.closeMenu" : "a11y.openMenu"));
+    }
     // Recalculate open accordion / menu-panel heights if text length changed
     accordionGroups.forEach(function (group) {
       group.items.forEach(function (item) {
@@ -494,29 +504,6 @@
     var target = $("[data-faq-list]");
     if (!target) return;
 
-    // Mount from manifest if the hardcoded fallback markup is somehow absent
-    if (!target.children.length && data.faqCategories) {
-      target.innerHTML = data.faqCategories.map(function (cat, ci) {
-        var items = cat.items.map(function (item, ii) {
-          var id = "faq-" + ci + "-" + ii;
-          return (
-            '<div class="accordion-item" data-faq-item>' +
-              '<h4 class="faq-q"><button type="button" class="faq-trigger" aria-expanded="false" aria-controls="' + id + '">' +
-                '<span>' + item.q + '</span><span class="faq-icon" aria-hidden="true"></span>' +
-              '</button></h4>' +
-              '<div class="faq-a" id="' + id + '"><p>' + item.a + '</p></div>' +
-            '</div>'
-          );
-        }).join("");
-        return (
-          '<div class="accordion-category" data-accordion-cat>' +
-            '<h3 class="accordion-cat-q"><button type="button" class="accordion-cat-trigger" aria-expanded="false">' + cat.name + '<span class="cat-icon" aria-hidden="true"></span></button></h3>' +
-            '<div class="accordion-cat-panel" data-accordion>' + items + '</div>' +
-          '</div>'
-        );
-      }).join("");
-    }
-
     // Level 1 — categories (generous max-height, not measured in px;
     // avoids having to re-measure when the nested level changes size)
     var catItems = $$("[data-accordion-cat]", target).map(function (root) {
@@ -727,6 +714,16 @@
       return type;
     }
 
+    var lastCountry = null;
+    function nextLocation() {
+      var locations = sp.locations || [];
+      if (!locations.length) return null;
+      var pool = locations.filter(function (loc) { return loc.country !== lastCountry; });
+      var loc = pickRandom(pool.length ? pool : locations);
+      lastCountry = loc.country;
+      return loc;
+    }
+
     function buildMessage(type) {
       if (type === "visitors") {
         var count = pickRandom(sp.visitorCounts || [3]);
@@ -738,7 +735,8 @@
       }
       if (type === "purchase") {
         var name = pickRandom(sp.names);
-        var city = pickRandom(sp.cities || [""]);
+        var loc = nextLocation();
+        var city = loc ? loc.city : "";
         var product = t("socialproof.product") || sp.product || data.name;
         return {
           icon: SP_ICONS.purchase,
@@ -749,7 +747,7 @@
       return { isRating: true, score: sp.rating || 4.8, text: t("socialproof.ratingText") };
     }
 
-    function showToast() {
+    function showSpToast() {
       var type = nextType();
       var msg = buildMessage(type);
 
@@ -786,10 +784,10 @@
 
     function scheduleNext() {
       var gap = SP_CONFIG.gapMinMs + Math.random() * (SP_CONFIG.gapMaxMs - SP_CONFIG.gapMinMs);
-      setTimeout(showToast, gap);
+      setTimeout(showSpToast, gap);
     }
 
-    setTimeout(showToast, SP_CONFIG.firstDelayMs);
+    setTimeout(showSpToast, SP_CONFIG.firstDelayMs);
   }
 
   /* -------------------------------------------------------------

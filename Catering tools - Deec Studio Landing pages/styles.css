@@ -20,7 +20,6 @@
   --moss-2:    #6F5C46;
   --moss-soft: #C6B49C;
   --terracotta:   #b35d3a;
-  --terracotta-2: #96492b;
   --urgent:      #c23b32;
   --urgent-2:    #9c2f27;
   --urgent-rgb:  194, 59, 50;
@@ -45,7 +44,6 @@
   --mono: var(--sans);
 
   --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:   cubic-bezier(0.7, 0, 0.84, 0);
   --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   --container: 1180px;
@@ -189,17 +187,7 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   box-shadow: var(--shadow-lift);
 }
 .btn-primary:active { transform: translateY(-1px); transition-duration: .12s; }
-.btn-ghost {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line);
-}
-.btn-ghost:hover {
-  border-color: var(--ink);
-  transform: translateY(-2px);
-}
 .btn-lg { padding: 1.15rem 2.4rem; font-size: 1.02rem; }
-.btn-block { width: 100%; }
 
 .price-tag {
   font-family: var(--mono);
@@ -334,14 +322,14 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 }
 .menu-list a:hover { background: var(--bg-2); color: var(--ink); }
 .menu-list li + li { margin-top: 2px; }
-.menu-link-cta {
+.menu-list .menu-link-cta {
   margin-top: .4rem;
   background: var(--moss);
-  color: var(--cream) !important;
+  color: var(--cream);
   text-align: center;
-  font-weight: 700 !important;
+  font-weight: 700;
 }
-.menu-link-cta:hover { background: var(--moss-2); color: var(--cream) !important; }
+.menu-list .menu-link-cta:hover { background: var(--moss-2); color: var(--cream); }
 
 @media (max-width: 719px) {
   .nav-brand-logo { height: 44px; }
@@ -754,7 +742,6 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   letter-spacing: .01em;
 }
 .hero-meta span { white-space: nowrap; }
-.hero-meta-icons { align-items: center; }
 .hero-meta-item {
   display: inline-flex;
   align-items: center;
@@ -1157,7 +1144,6 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   --qd-surface-sunken: #f4f1ea;
   --qd-border: #e6e1d6;
   --qd-accent: #b3762c;
-  --qd-accent-ink: #6b4718;
   --qd-success: #2f7d4f;
   --qd-table-head: #2f3126;
 }
@@ -1767,14 +1753,6 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   margin-inline: auto;
   text-align: center;
 }
-.oferta-group-title {
-  font-family: var(--mono);
-  font-size: .74rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: .7rem;
-}
 .oferta-check-list {
   display: grid;
   gap: .55rem;
@@ -1817,11 +1795,6 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   margin-top: .3rem;
   font-size: .92rem;
   color: var(--ink-mute);
-}
-.oferta-price-terms {
-  margin-top: .3rem;
-  font-size: .85rem;
-  color: var(--ink-faint);
 }
 .oferta-price-block .btn { margin-top: 1.6rem; }
 @media (max-width: 599px) {
@@ -1890,7 +1863,11 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 .accordion-item.is-open .faq-a { /* max-height set inline via JS to content's scrollHeight */ }
 
 /* =============================================================
-   15. Footer
+   15. Footer + shared floating/overlay components (15a: footer;
+   15b–15h below: FAB stack, sticky CTA bar, social proof toast,
+   urgency countdown, rating stars, price-compare badge, accordion —
+   cross-cutting UI reused across Hero/Oferta/FAQ rather than
+   sección-specific)
    ============================================================= */
 .footer {
   background: var(--ink);
@@ -2248,7 +2225,7 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 }
 
 /* =============================================================
-   15e. Two-level accordion (FAQ) — sección 3b
+   15h. Two-level accordion (FAQ) — sección 3b
    ============================================================= */
 .accordion-category { border-top: 1px solid var(--line); }
 .faq-list [data-accordion-cat]:last-child { border-bottom: 1px solid var(--line); }

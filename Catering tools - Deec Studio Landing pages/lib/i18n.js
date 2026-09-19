@@ -1,9 +1,12 @@
 /* ==========================================================================
    CateringTools — i18n dictionary (ES / EN)
-   Covers the full landing page copy. Illustrative fake-UI micro-copy inside
-   the notebook→mockup showcase and the "personalización" mockups is left
-   Spanish-only on purpose (decorative product-screenshot chrome, same as
-   the text baked into the PNG mockups elsewhere on the page).
+   Covers the full landing page copy, including the "Personalización" stage
+   mockups (pv.mockup.*). The Hero / "Imagínalo" / "El problema" product-
+   screenshot mockups are static English micro-copy by design (they
+   represent a real screenshot of the English product UI, same as a baked-in
+   product photo) and don't use data-i18n. The handwritten notebook scribble
+   is separate decorative chrome and stays Spanish-only, same as the text
+   baked into the original PNG mockups.
    ========================================================================== */
 (function () {
   "use strict";
@@ -11,6 +14,12 @@
   window.__I18N__ = {
     es: {
       "a11y.skipLink": "Saltar al contenido",
+      "a11y.faqLink": "Preguntas frecuentes",
+      "a11y.whatsappLink": "Escribir por WhatsApp",
+      "a11y.langGroup": "Idioma",
+      "a11y.openMenu": "Abrir menú",
+      "a11y.closeMenu": "Cerrar menú",
+      "a11y.mobileNav": "Menú de navegación",
 
       "nav.item.home": "Inicio",
       "nav.item.problem": "El problema",
@@ -99,6 +108,22 @@
       "pv.stage3.body": "Configuras los servicios que ofreces.",
       "pv.stage4.title": "Tu cotizador",
       "pv.stage4.body": "Listo para usar con tus precios y tu imagen.",
+
+      "pv.mockup.barTitleGeneric": "Cotizador Web",
+      "pv.mockup.barTitleBranded": "Cotizador Web Personalizado",
+      "pv.mockup.bizNamePlaceholder": "Nombre del negocio",
+      "pv.mockup.bizRoleGeneric": "Presupuesto de servicio",
+      "pv.mockup.bizRoleCatering": "Presupuesto de catering",
+      "pv.mockup.newQuote": "Nueva cotización",
+      "pv.mockup.serviceLabel": "Servicio",
+      "pv.mockup.selectService": "Selecciona un servicio",
+      "pv.mockup.priceLabel": "Precio",
+      "pv.mockup.generateQuote": "Generar cotización",
+      "pv.mockup.additionalServices": "Servicios adicionales",
+      "pv.mockup.tagWaiters": "Meseros adicionales",
+      "pv.mockup.tagSetup": "Montaje y decoración",
+      "pv.mockup.tagGlassware": "Cristalería de autor",
+      "pv.mockup.quoteTotal": "Total de la cotización",
 
       "pasos.eyebrow": "El proceso",
       "pasos.headline": "Configurado una vez. Utilizado una y otra vez.",
@@ -222,6 +247,12 @@
     },
     en: {
       "a11y.skipLink": "Skip to content",
+      "a11y.faqLink": "Frequently asked questions",
+      "a11y.whatsappLink": "Message us on WhatsApp",
+      "a11y.langGroup": "Language",
+      "a11y.openMenu": "Open menu",
+      "a11y.closeMenu": "Close menu",
+      "a11y.mobileNav": "Navigation menu",
 
       "nav.item.home": "Home",
       "nav.item.problem": "The problem",
@@ -310,6 +341,22 @@
       "pv.stage3.body": "You set up the services you offer.",
       "pv.stage4.title": "Your quoting tool",
       "pv.stage4.body": "Ready to use with your prices and your branding.",
+
+      "pv.mockup.barTitleGeneric": "Web Quoting Tool",
+      "pv.mockup.barTitleBranded": "Custom Web Quoting Tool",
+      "pv.mockup.bizNamePlaceholder": "Your business name",
+      "pv.mockup.bizRoleGeneric": "Service estimate",
+      "pv.mockup.bizRoleCatering": "Catering estimate",
+      "pv.mockup.newQuote": "New quote",
+      "pv.mockup.serviceLabel": "Service",
+      "pv.mockup.selectService": "Select a service",
+      "pv.mockup.priceLabel": "Price",
+      "pv.mockup.generateQuote": "Generate quote",
+      "pv.mockup.additionalServices": "Additional services",
+      "pv.mockup.tagWaiters": "Additional waiters",
+      "pv.mockup.tagSetup": "Setup & decor",
+      "pv.mockup.tagGlassware": "Signature glassware",
+      "pv.mockup.quoteTotal": "Quote total",
 
       "pasos.eyebrow": "The process",
       "pasos.headline": "Set up once. Used again and again.",

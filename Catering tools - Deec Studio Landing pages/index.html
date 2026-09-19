@@ -20,7 +20,7 @@
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-<link rel="stylesheet" href="styles.css?v=20260918aa" />
+<link rel="stylesheet" href="styles.css?v=20260918ag" />
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skipLink">Saltar al contenido</a>
@@ -35,14 +35,14 @@
     </a>
     <div class="nav-actions">
       <div class="nav-icons">
-        <a href="#faq" class="nav-icon-btn" aria-label="Preguntas frecuentes">
+        <a href="#faq" class="nav-icon-btn" data-i18n-aria="a11y.faqLink" aria-label="Preguntas frecuentes">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.6-1.4c.5.8.3 1.6-.4 2.2-.8.7-1.2 1.1-1.2 2.2"/><circle cx="12" cy="16.5" r=".6" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a href="#" class="nav-icon-btn" data-whatsapp-cta aria-label="Escribir por WhatsApp">
+        <a href="#" class="nav-icon-btn" data-whatsapp-cta data-i18n-aria="a11y.whatsappLink" aria-label="Escribir por WhatsApp">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 21.9c-1.596 0-3.16-.415-4.53-1.2l-.326-.194-3.37.884.9-3.286-.213-.337a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.885 9.9-9.885 2.643 0 5.126 1.03 6.994 2.898a9.82 9.82 0 0 1 2.9 6.994c-.003 5.45-4.444 9.876-9.744 9.876zm8.413-18.28A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.327.157 11.874a11.84 11.84 0 0 0 1.596 5.96L0 24l6.335-1.652a11.9 11.9 0 0 0 5.71 1.452h.005c6.554 0 11.89-5.328 11.893-11.876a11.8 11.8 0 0 0-3.48-8.304z"/></svg>
         </a>
       </div>
-      <div class="lang-toggle" data-lang-toggle role="group" aria-label="Idioma">
+      <div class="lang-toggle" data-lang-toggle role="group" data-i18n-aria="a11y.langGroup" aria-label="Idioma">
         <button type="button" class="lang-btn is-active" data-lang="es" aria-pressed="true" aria-label="Español">
           <svg class="flag" viewBox="0 0 20 14"><rect width="20" height="14" fill="#AA151B"/><rect y="3.5" width="20" height="7" fill="#F1BF00"/></svg>
         </button>
@@ -64,7 +64,7 @@
 </header>
 
 <div class="menu-backdrop" data-menu-backdrop hidden></div>
-<nav id="menu-panel" class="menu-panel" data-menu-panel aria-label="Menú de navegación" hidden>
+<nav id="menu-panel" class="menu-panel" data-menu-panel data-i18n-aria="a11y.mobileNav" aria-label="Menú de navegación" hidden>
   <ul class="menu-list">
     <li><a href="#top" data-i18n="nav.item.home">Inicio</a></li>
     <li><a href="#problema" data-i18n="nav.item.problem">El problema</a></li>
@@ -79,13 +79,13 @@
 
 <!-- Floating action buttons — FAQ (scrolls to inline accordion) + WhatsApp -->
 <div class="fab-stack" data-fab-stack>
-  <a href="#faq" class="fab-item" data-fab-item aria-label="Preguntas frecuentes">
+  <a href="#faq" class="fab-item" data-fab-item data-i18n-aria="a11y.faqLink" aria-label="Preguntas frecuentes">
     <span class="fab-bubble">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.6-1.4c.5.8.3 1.6-.4 2.2-.8.7-1.2 1.1-1.2 2.2"/><circle cx="12" cy="16.5" r=".6" fill="currentColor" stroke="none"/></svg>
     </span>
     <span class="fab-tooltip" data-i18n="fab.faq.title">Preguntas frecuentes</span>
   </a>
-  <a href="#" class="fab-item" data-fab-item data-whatsapp-cta aria-label="Escribir por WhatsApp">
+  <a href="#" class="fab-item" data-fab-item data-whatsapp-cta data-i18n-aria="a11y.whatsappLink" aria-label="Escribir por WhatsApp">
     <span class="fab-bubble fab-bubble-accent">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 21.9c-1.596 0-3.16-.415-4.53-1.2l-.326-.194-3.37.884.9-3.286-.213-.337a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.885 9.9-9.885 2.643 0 5.126 1.03 6.994 2.898a9.82 9.82 0 0 1 2.9 6.994c-.003 5.45-4.444 9.876-9.744 9.876zm8.413-18.28A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.327.157 11.874a11.84 11.84 0 0 0 1.596 5.96L0 24l6.335-1.652a11.9 11.9 0 0 0 5.71 1.452h.005c6.554 0 11.89-5.328 11.893-11.876a11.8 11.8 0 0 0-3.48-8.304z"/></svg>
     </span>
@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <a class="btn btn-primary" data-cta-buy href="https://wa.me/525642145001?text=Hola%2C%20estoy%20interesado%20en%20CateringTools.%0A%0AMe%20interesa%20adquirir%20mi%20cotizador%20web%20personalizado%20por%20%2449.99%20USD.%0A%0AQuiero%20comenzar%20con%20la%20configuraci%C3%B3n%20de%20mi%20cotizador%20para%20mi%20negocio.%0A%0AQuedo%20atento%20para%20conocer%20el%20proceso%20de%20compra%20y%20comenzar.">Comprar ahora <span class="btn-arrow" aria-hidden="true">→</span></a>
+    <a class="btn btn-primary" data-cta-buy href="#oferta">Comprar ahora <span class="btn-arrow" aria-hidden="true">→</span></a>
   </div>
   <div class="cta-bar-badges cta-bar-badges-icons">
     <span class="hero-meta-item">
@@ -205,7 +205,7 @@
               <div class="qb-settings-bar">
                 <div class="qb-settings-field">
                   <span class="qb-settings-label">Market</span>
-                  <div class="qb-fake-select"><svg class="qb-flag-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#B22234" /><rect y="1.08" width="20" height="1.08" fill="#fff" /><rect y="3.23" width="20" height="1.08" fill="#fff" /><rect y="5.38" width="20" height="1.08" fill="#fff" /><rect y="7.54" width="20" height="1.08" fill="#fff" /><rect y="9.69" width="20" height="1.08" fill="#fff" /><rect y="11.85" width="20" height="1.08" fill="#fff" /><rect width="8.6" height="7.54" fill="#3C3B6E" /></svg>Estados Unidos</div>
+                  <div class="qb-fake-select"><svg class="qb-flag-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#B22234" /><rect y="1.08" width="20" height="1.08" fill="#fff" /><rect y="3.23" width="20" height="1.08" fill="#fff" /><rect y="5.38" width="20" height="1.08" fill="#fff" /><rect y="7.54" width="20" height="1.08" fill="#fff" /><rect y="9.69" width="20" height="1.08" fill="#fff" /><rect y="11.85" width="20" height="1.08" fill="#fff" /><rect width="8.6" height="7.54" fill="#3C3B6E" /></svg>United States</div>
                 </div>
                 <div class="qb-settings-field">
                   <span class="qb-settings-label">Language</span>
@@ -265,7 +265,7 @@
                     <span class="qb-card-icon done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
                     <div class="qb-card-text">
                       <p class="qb-card-title">Event</p>
-                      <p class="qb-card-summary">Boda · September 18, 2026 · 150 guests</p>
+                      <p class="qb-card-summary">Wedding · September 18, 2026 · 150 guests</p>
                     </div>
                     <span class="qb-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg></span>
                   </div>
@@ -275,7 +275,7 @@
                     <span class="qb-card-icon done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
                     <div class="qb-card-text">
                       <p class="qb-card-title">Services</p>
-                      <p class="qb-card-summary">Package Premium · Servicio emplazado</p>
+                      <p class="qb-card-summary">Package Premium · On-site service</p>
                     </div>
                     <span class="qb-card-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg></span>
                   </div>
@@ -298,7 +298,7 @@
                       </div>
                       <dl class="qb-info-grid">
                         <div class="qb-info-item"><dt>Client</dt><dd>Ana &amp; Robert</dd></div>
-                        <div class="qb-info-item"><dt>Type</dt><dd>Boda</dd></div>
+                        <div class="qb-info-item"><dt>Type</dt><dd>Wedding</dd></div>
                         <div class="qb-info-item"><dt>Date</dt><dd>Sep 18, 2026</dd></div>
                         <div class="qb-info-item"><dt>Guests</dt><dd>150</dd></div>
                       </dl>
@@ -310,7 +310,7 @@
                       </div>
                       <div class="qb-services-list">
                         <div class="qb-service-row"><span class="qb-service-name">Package Premium</span><span class="qb-service-price">$133,500.00</span></div>
-                        <div class="qb-service-row"><span class="qb-service-name">Meseros adicionales &times; 6</span><span class="qb-service-price">$4,800.00</span></div>
+                        <div class="qb-service-row"><span class="qb-service-name">Additional waiters &times; 6</span><span class="qb-service-price">$4,800.00</span></div>
                       </div>
                     </div>
                     <div class="qb-section">
@@ -359,7 +359,7 @@
         </div>
       </div>
 
-      <a class="btn btn-primary btn-lg btn-hero" data-cta-buy href="https://wa.me/525642145001?text=Hola%2C%20estoy%20interesado%20en%20CateringTools.%0A%0AMe%20interesa%20adquirir%20mi%20cotizador%20web%20personalizado%20por%20%2449.99%20USD.%0A%0AQuiero%20comenzar%20con%20la%20configuraci%C3%B3n%20de%20mi%20cotizador%20para%20mi%20negocio.%0A%0AQuedo%20atento%20para%20conocer%20el%20proceso%20de%20compra%20y%20comenzar.">
+      <a class="btn btn-primary btn-lg btn-hero" data-cta-buy href="#oferta">
         <span data-i18n="hero.cta">Comprar ahora</span>
         <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
@@ -451,79 +451,79 @@
                     <span class="qd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-8H7v8M7 3v5h13" /><path d="M4 3h16v18H4z" /></svg></span>
                     <div>
                       <p class="qd-business-name">Lebanquet Catering</p>
-                      <p class="qd-tagline">BANQUETES Y EVENTOS ESPECIALES</p>
+                      <p class="qd-tagline">BANQUETS &amp; SPECIAL EVENTS</p>
                     </div>
                   </div>
                   <div class="qd-header-right">
-                    <p class="qd-quote-abbrev">COT.</p>
+                    <p class="qd-quote-abbrev">QUOTE</p>
                     <p class="qd-quote-number">PRE-202609-0073</p>
-                    <p class="qd-issue-date">Emisión: 18 sep 2026</p>
-                    <p class="qd-valid-for">Válida por 15 días</p>
+                    <p class="qd-issue-date">Issued: Sep 18, 2026</p>
+                    <p class="qd-valid-for">Valid for 15 days</p>
                   </div>
                 </div>
                 <div class="qd-contact-line">55 8123 4500 · contacto@lebanquet.com</div>
 
                 <div class="qd-section">
                   <div class="qd-section-title-row">
-                    <span class="qd-section-label">Información del evento</span>
+                    <span class="qd-section-label">Event information</span>
                     <span class="qd-section-rule"></span>
                   </div>
                   <dl class="qd-info-grid">
-                    <div class="qd-info-item"><dt>Cliente</dt><dd>Ana y Roberto Fernández</dd></div>
-                    <div class="qd-info-item"><dt>Tipo de evento</dt><dd>Boda</dd></div>
-                    <div class="qd-info-item"><dt>Fecha</dt><dd>18 sep 2026</dd></div>
-                    <div class="qd-info-item"><dt>Invitados</dt><dd>150 personas</dd></div>
-                    <div class="qd-info-item"><dt>Ubicación</dt><dd>Jardín Los Encinos, CDMX</dd></div>
+                    <div class="qd-info-item"><dt>Client</dt><dd>Ana &amp; Roberto Fernández</dd></div>
+                    <div class="qd-info-item"><dt>Event type</dt><dd>Wedding</dd></div>
+                    <div class="qd-info-item"><dt>Date</dt><dd>Sep 18, 2026</dd></div>
+                    <div class="qd-info-item"><dt>Guests</dt><dd>150</dd></div>
+                    <div class="qd-info-item"><dt>Location</dt><dd>Jardín Los Encinos, Mexico City</dd></div>
                   </dl>
                 </div>
 
                 <div class="qd-section">
                   <div class="qd-section-title-row">
-                    <span class="qd-section-label">Servicios cotizados</span>
+                    <span class="qd-section-label">Quoted services</span>
                     <span class="qd-section-rule"></span>
                   </div>
                   <table class="qd-table">
                     <thead>
                       <tr>
                         <th class="qd-num">#</th>
-                        <th>Servicio</th>
-                        <th class="qd-center qd-col-qty">Cant.</th>
-                        <th class="qd-right qd-amount">Importe</th>
+                        <th>Service</th>
+                        <th class="qd-center qd-col-qty">Qty.</th>
+                        <th class="qd-right qd-amount">Amount</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td class="qd-num">1</td>
-                        <td class="qd-name">Paquete Premium</td>
+                        <td class="qd-name">Package Premium</td>
                         <td class="qd-center qd-col-qty">150</td>
                         <td class="qd-amount">$133,500.00</td>
                       </tr>
                       <tr>
                         <td class="qd-num">2</td>
-                        <td class="qd-name">Meseros adicionales</td>
+                        <td class="qd-name">Additional waiters</td>
                         <td class="qd-center qd-col-qty">6</td>
                         <td class="qd-amount">$4,800.00</td>
                       </tr>
                       <tr>
                         <td class="qd-num">3</td>
-                        <td class="qd-name">Decoración floral</td>
+                        <td class="qd-name">Floral decor</td>
                         <td class="qd-center qd-col-qty">1</td>
                         <td class="qd-amount">$8,500.00</td>
                       </tr>
                     </tbody>
                   </table>
-                  <p class="qd-includes">Incluye: banquete completo, barra libre, mobiliario y personal de servicio</p>
+                  <p class="qd-includes">Includes: full banquet, open bar, furniture and service staff</p>
                 </div>
 
                 <div class="qd-section">
                   <div class="qd-section-title-row">
-                    <span class="qd-section-label">Resumen financiero</span>
+                    <span class="qd-section-label">Financial summary</span>
                     <span class="qd-section-rule"></span>
                   </div>
                   <div class="qd-breakdown">
                     <div class="qd-breakdown-row"><span>Subtotal</span><span class="qd-val">$146,800.00</span></div>
-                    <div class="qd-breakdown-row"><span>Descuento (10%)</span><span class="qd-val qd-discount">- $14,680.00</span></div>
-                    <div class="qd-breakdown-row"><span>IVA (16%)</span><span class="qd-val">$21,139.20</span></div>
+                    <div class="qd-breakdown-row"><span>Discount (10%)</span><span class="qd-val qd-discount">- $14,680.00</span></div>
+                    <div class="qd-breakdown-row"><span>Sales Tax (16%)</span><span class="qd-val">$21,139.20</span></div>
                   </div>
                   <div class="qd-total-block">
                     <p class="qd-total-label">Total</p>
@@ -533,17 +533,17 @@
 
                 <div class="qd-section">
                   <div class="qd-payment-card">
-                    <p class="qd-payment-title">Condiciones de pago</p>
+                    <p class="qd-payment-title">Payment terms</p>
                     <div class="qd-payment-item">
-                      <p class="qd-payment-item-label">Anticipo requerido (50%)</p>
+                      <p class="qd-payment-item-label">Deposit required (50%)</p>
                       <p class="qd-payment-item-value">$76,629.60</p>
                     </div>
                     <div class="qd-payment-item">
-                      <p class="qd-payment-item-label">Saldo pendiente</p>
+                      <p class="qd-payment-item-label">Balance due</p>
                       <p class="qd-payment-item-value qd-dark">$76,629.60</p>
                     </div>
-                    <p class="qd-valid-until-label">Fecha límite de pago</p>
-                    <p class="qd-valid-until-value">3 oct 2026</p>
+                    <p class="qd-valid-until-label">Payment due date</p>
+                    <p class="qd-valid-until-value">Oct 3, 2026</p>
                   </div>
                 </div>
 
@@ -552,7 +552,7 @@
                     <p class="qd-footer-name">Lebanquet Catering</p>
                     <p class="qd-footer-contact">55 8123 4500 · contacto@lebanquet.com</p>
                   </div>
-                  <p class="qd-footer-note">Gracias por confiar en nosotros</p>
+                  <p class="qd-footer-note">Thank you for your trust</p>
                 </div>
               </div>
             </div>
@@ -606,8 +606,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
             </span>
             <div class="rm-header-text">
-              <h3 class="rm-step-title">Revisar</h3>
-              <p class="rm-step-desc">Confirma los detalles antes de generar la cotización</p>
+              <h3 class="rm-step-title">Review</h3>
+              <p class="rm-step-desc">Confirm the details before generating the quote</p>
             </div>
             <span class="rm-chevron">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
@@ -617,42 +617,42 @@
           <div class="rm-content">
             <div class="rm-section">
               <div class="rm-section-title-row">
-                <span class="rm-section-label">Cliente y evento</span>
+                <span class="rm-section-label">Client and event</span>
                 <span class="rm-section-rule"></span>
               </div>
               <dl class="rm-info-grid">
-                <div class="rm-info-item"><dt>Cliente</dt><dd>Ana y Roberto Fernández</dd></div>
-                <div class="rm-info-item"><dt>Tipo de evento</dt><dd>Boda</dd></div>
-                <div class="rm-info-item"><dt>Fecha</dt><dd>14 nov 2026</dd></div>
-                <div class="rm-info-item"><dt>Invitados</dt><dd>120 personas</dd></div>
-                <div class="rm-info-item"><dt>Ubicación</dt><dd>Jardín Los Encinos, CDMX</dd></div>
+                <div class="rm-info-item"><dt>Client</dt><dd>Ana &amp; Roberto Fernández</dd></div>
+                <div class="rm-info-item"><dt>Event type</dt><dd>Wedding</dd></div>
+                <div class="rm-info-item"><dt>Date</dt><dd>Nov 14, 2026</dd></div>
+                <div class="rm-info-item"><dt>Guests</dt><dd>120</dd></div>
+                <div class="rm-info-item"><dt>Location</dt><dd>Jardín Los Encinos, Mexico City</dd></div>
               </dl>
             </div>
 
             <div class="rm-section">
               <div class="rm-section-title-row">
-                <span class="rm-section-label">Servicios</span>
+                <span class="rm-section-label">Services</span>
                 <span class="rm-section-rule"></span>
               </div>
               <ul class="rm-services-list">
                 <li class="rm-service-row">
                   <div>
-                    <div class="rm-service-name">Paquete Premium</div>
-                    <div class="rm-service-meta">120 invitados · Incluye banquete, barra libre y mobiliario</div>
+                    <div class="rm-service-name">Package Premium</div>
+                    <div class="rm-service-meta">120 guests · Includes banquet, open bar and furniture</div>
                   </div>
                   <div class="rm-service-price">$96,000.00</div>
                 </li>
                 <li class="rm-service-row">
                   <div>
-                    <div class="rm-service-name">Decoración floral</div>
-                    <div class="rm-service-meta">1 servicio</div>
+                    <div class="rm-service-name">Floral decor</div>
+                    <div class="rm-service-meta">1 service</div>
                   </div>
                   <div class="rm-service-price">$8,500.00</div>
                 </li>
                 <li class="rm-service-row">
                   <div>
-                    <div class="rm-service-name">DJ y sonido</div>
-                    <div class="rm-service-meta">1 servicio</div>
+                    <div class="rm-service-name">DJ and sound</div>
+                    <div class="rm-service-meta">1 service</div>
                   </div>
                   <div class="rm-service-price">$6,200.00</div>
                 </li>
@@ -661,15 +661,15 @@
 
             <div class="rm-section">
               <div class="rm-section-title-row">
-                <span class="rm-section-label">Resumen financiero</span>
+                <span class="rm-section-label">Financial summary</span>
                 <span class="rm-section-rule"></span>
               </div>
               <div class="rm-summary-columns">
                 <div>
                   <div class="rm-breakdown">
                     <div class="rm-breakdown-row"><span>Subtotal</span><span class="rm-val">$110,700.00</span></div>
-                    <div class="rm-breakdown-row"><span>Descuento (10%)</span><span class="rm-val rm-discount">- $11,070.00</span></div>
-                    <div class="rm-breakdown-row"><span>IVA (16%)</span><span class="rm-val">$15,940.80</span></div>
+                    <div class="rm-breakdown-row"><span>Discount (10%)</span><span class="rm-val rm-discount">- $11,070.00</span></div>
+                    <div class="rm-breakdown-row"><span>Sales Tax (16%)</span><span class="rm-val">$15,940.80</span></div>
                   </div>
                   <div class="rm-total-block">
                     <p class="rm-total-label">Total</p>
@@ -677,24 +677,24 @@
                   </div>
                 </div>
                 <div class="rm-payment-card">
-                  <p class="rm-payment-title">Condiciones de pago</p>
+                  <p class="rm-payment-title">Payment terms</p>
                   <div class="rm-payment-item">
-                    <p class="rm-payment-item-label">Anticipo requerido (50%)</p>
+                    <p class="rm-payment-item-label">Deposit required (50%)</p>
                     <p class="rm-payment-item-value">$57,785.40</p>
                   </div>
                   <div class="rm-payment-item">
-                    <p class="rm-payment-item-label">Saldo pendiente</p>
+                    <p class="rm-payment-item-label">Balance due</p>
                     <p class="rm-payment-item-value rm-dark">$57,785.40</p>
                   </div>
                   <div class="rm-payment-due">
-                    <p class="rm-payment-item-label">Fecha límite de pago</p>
-                    <p class="rm-payment-due-value">30 sep 2026</p>
+                    <p class="rm-payment-item-label">Payment due date</p>
+                    <p class="rm-payment-due-value">Sep 30, 2026</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="rm-continue-btn">Confirmar y continuar</div>
+            <div class="rm-continue-btn">Confirm and continue</div>
           </div>
         </div>
       </div>
@@ -724,27 +724,27 @@
               <div class="mockup mockup-generic">
                 <div class="mockup-bar">
                   <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
-                  <span class="mockup-bar-title">Cotizador Web</span>
+                  <span class="mockup-bar-title" data-i18n="pv.mockup.barTitleGeneric">Cotizador Web</span>
                 </div>
                 <div class="mockup-head">
                   <div class="mockup-biz">
                     <span class="mockup-biz-mark pv-muted-mark">—</span>
                     <div>
-                      <p class="mockup-biz-name pv-muted-name">Nombre del negocio</p>
-                      <p class="mockup-biz-role">Presupuesto de servicio</p>
+                      <p class="mockup-biz-name pv-muted-name" data-i18n="pv.mockup.bizNamePlaceholder">Nombre del negocio</p>
+                      <p class="mockup-biz-role" data-i18n="pv.mockup.bizRoleGeneric">Presupuesto de servicio</p>
                     </div>
                   </div>
                 </div>
                 <div class="mockup-body">
                   <div class="mockup-field">
-                    <label>Servicio</label>
-                    <div class="mockup-select"><span>Selecciona un servicio</span> <span>&#9662;</span></div>
+                    <label data-i18n="pv.mockup.serviceLabel">Servicio</label>
+                    <div class="mockup-select"><span data-i18n="pv.mockup.selectService">Selecciona un servicio</span> <span>&#9662;</span></div>
                   </div>
                   <div class="mockup-field">
-                    <label>Precio</label>
+                    <label data-i18n="pv.mockup.priceLabel">Precio</label>
                     <div class="mockup-input pv-muted-input">—</div>
                   </div>
-                  <div class="mockup-action pv-disabled-action">Generar cotización</div>
+                  <div class="mockup-action pv-disabled-action" data-i18n="pv.mockup.generateQuote">Generar cotización</div>
                 </div>
               </div>
             </div>
@@ -754,24 +754,24 @@
               <div class="mockup">
                 <div class="mockup-bar">
                   <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
-                  <span class="mockup-bar-title">Cotizador Web Personalizado</span>
+                  <span class="mockup-bar-title" data-i18n="pv.mockup.barTitleBranded">Cotizador Web Personalizado</span>
                 </div>
                 <div class="mockup-head">
                   <div class="mockup-biz">
                     <span class="mockup-biz-mark">LB</span>
                     <div>
                       <p class="mockup-biz-name">Lebanquet</p>
-                      <p class="mockup-biz-role">Presupuesto de catering</p>
+                      <p class="mockup-biz-role" data-i18n="pv.mockup.bizRoleCatering">Presupuesto de catering</p>
                     </div>
                   </div>
-                  <span class="mockup-badge">Nueva cotización</span>
+                  <span class="mockup-badge" data-i18n="pv.mockup.newQuote">Nueva cotización</span>
                 </div>
                 <div class="mockup-body">
                   <div class="mockup-field">
-                    <label>Servicio</label>
-                    <div class="mockup-select"><span>Selecciona un servicio</span> <span>&#9662;</span></div>
+                    <label data-i18n="pv.mockup.serviceLabel">Servicio</label>
+                    <div class="mockup-select"><span data-i18n="pv.mockup.selectService">Selecciona un servicio</span> <span>&#9662;</span></div>
                   </div>
-                  <div class="mockup-action pv-disabled-action">Generar cotización</div>
+                  <div class="mockup-action pv-disabled-action" data-i18n="pv.mockup.generateQuote">Generar cotización</div>
                 </div>
               </div>
             </div>
@@ -781,28 +781,28 @@
               <div class="mockup">
                 <div class="mockup-bar">
                   <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
-                  <span class="mockup-bar-title">Cotizador Web Personalizado</span>
+                  <span class="mockup-bar-title" data-i18n="pv.mockup.barTitleBranded">Cotizador Web Personalizado</span>
                 </div>
                 <div class="mockup-head">
                   <div class="mockup-biz">
                     <span class="mockup-biz-mark">LB</span>
                     <div>
                       <p class="mockup-biz-name">Lebanquet</p>
-                      <p class="mockup-biz-role">Presupuesto de catering</p>
+                      <p class="mockup-biz-role" data-i18n="pv.mockup.bizRoleCatering">Presupuesto de catering</p>
                     </div>
                   </div>
-                  <span class="mockup-badge">Nueva cotización</span>
+                  <span class="mockup-badge" data-i18n="pv.mockup.newQuote">Nueva cotización</span>
                 </div>
                 <div class="mockup-body">
                   <div class="mockup-field">
-                    <label>Servicios adicionales</label>
+                    <label data-i18n="pv.mockup.additionalServices">Servicios adicionales</label>
                     <div class="mockup-tags">
-                      <span class="mockup-tag is-active">Meseros adicionales</span>
-                      <span class="mockup-tag is-active">Montaje y decoración</span>
-                      <span class="mockup-tag is-active">Cristalería de autor</span>
+                      <span class="mockup-tag is-active" data-i18n="pv.mockup.tagWaiters">Meseros adicionales</span>
+                      <span class="mockup-tag is-active" data-i18n="pv.mockup.tagSetup">Montaje y decoración</span>
+                      <span class="mockup-tag is-active" data-i18n="pv.mockup.tagGlassware">Cristalería de autor</span>
                     </div>
                   </div>
-                  <div class="mockup-action pv-disabled-action">Generar cotización</div>
+                  <div class="mockup-action pv-disabled-action" data-i18n="pv.mockup.generateQuote">Generar cotización</div>
                 </div>
               </div>
             </div>
@@ -812,29 +812,29 @@
               <div class="mockup">
                 <div class="mockup-bar">
                   <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
-                  <span class="mockup-bar-title">Cotizador Web Personalizado</span>
+                  <span class="mockup-bar-title" data-i18n="pv.mockup.barTitleBranded">Cotizador Web Personalizado</span>
                 </div>
                 <div class="mockup-head">
                   <div class="mockup-biz">
                     <span class="mockup-biz-mark">LB</span>
                     <div>
                       <p class="mockup-biz-name">Lebanquet</p>
-                      <p class="mockup-biz-role">Presupuesto de catering</p>
+                      <p class="mockup-biz-role" data-i18n="pv.mockup.bizRoleCatering">Presupuesto de catering</p>
                     </div>
                   </div>
-                  <span class="mockup-badge">Nueva cotización</span>
+                  <span class="mockup-badge" data-i18n="pv.mockup.newQuote">Nueva cotización</span>
                 </div>
                 <div class="mockup-body">
                   <div class="mockup-summary">
-                    <div class="mockup-summary-row"><span>Meseros adicionales</span><span>$800.00</span></div>
-                    <div class="mockup-summary-row"><span>Montaje y decoración</span><span>$5,000.00</span></div>
-                    <div class="mockup-summary-row"><span>Cristalería de autor</span><span>$1,800.00</span></div>
+                    <div class="mockup-summary-row"><span data-i18n="pv.mockup.tagWaiters">Meseros adicionales</span><span>$800.00</span></div>
+                    <div class="mockup-summary-row"><span data-i18n="pv.mockup.tagSetup">Montaje y decoración</span><span>$5,000.00</span></div>
+                    <div class="mockup-summary-row"><span data-i18n="pv.mockup.tagGlassware">Cristalería de autor</span><span>$1,800.00</span></div>
                     <div class="mockup-summary-row mockup-summary-total">
-                      <span>Total de la cotización</span>
+                      <span data-i18n="pv.mockup.quoteTotal">Total de la cotización</span>
                       <span class="mockup-price">$7,600.00</span>
                     </div>
                   </div>
-                  <div class="mockup-action">Generar cotización</div>
+                  <div class="mockup-action" data-i18n="pv.mockup.generateQuote">Generar cotización</div>
                 </div>
               </div>
             </div>
@@ -1051,7 +1051,7 @@
           </div>
         </div>
 
-        <a class="btn btn-primary btn-lg btn-hero" data-cta-buy href="https://wa.me/525642145001?text=Hola%2C%20estoy%20interesado%20en%20CateringTools.%0A%0AMe%20interesa%20adquirir%20mi%20cotizador%20web%20personalizado%20por%20%2449.99%20USD.%0A%0AQuiero%20comenzar%20con%20la%20configuraci%C3%B3n%20de%20mi%20cotizador%20para%20mi%20negocio.%0A%0AQuedo%20atento%20para%20conocer%20el%20proceso%20de%20compra%20y%20comenzar.">
+        <a class="btn btn-primary btn-lg btn-hero" data-cta-buy href="#oferta">
           <span data-i18n="hero.cta">Comprar ahora</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
@@ -1260,8 +1260,8 @@
   </div>
 </footer>
 
-<script defer src="lib/manifest.js?v=20260918aa"></script>
-<script defer src="lib/i18n.js?v=20260918aa"></script>
-<script defer src="main.js?v=20260918aa"></script>
+<script defer src="lib/manifest.js?v=20260918ag"></script>
+<script defer src="lib/i18n.js?v=20260918ag"></script>
+<script defer src="main.js?v=20260918ag"></script>
 </body>
 </html>
