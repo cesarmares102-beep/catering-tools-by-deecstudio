@@ -9,17 +9,36 @@
   var $$ = function (sel, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(sel)); };
   var fineHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var refreshSocialProofToast = null; // set by initSocialProof(), called from applyLanguage()
 
   function safe(fn, name) {
     try { fn(); } catch (e) { if (window.console) console.warn("[" + name + "]", e); }
   }
 
   /* -------------------------------------------------------------
+     Web fonts — flip the media="print" stylesheets (see index.html)
+     to "all" so they apply without having blocked first paint.
+     ------------------------------------------------------------- */
+  function initFontStylesheets() {
+    $$("[data-font-stylesheet]").forEach(function (link) {
+      link.media = "all";
+    });
+  }
+
+  /* -------------------------------------------------------------
      i18n — drives every [data-i18n] node on the page (nav, sections,
-     FAQ, popups). Defaults to "es".
+     FAQ, popups). Initial language always follows the browser/device
+     language at the moment the page loads (defaulting to "es" for
+     anything that isn't English) — a manual toggle only applies to
+     the current page view, it isn't remembered for the next visit,
+     so the site keeps re-syncing to whatever the device is set to.
      ------------------------------------------------------------- */
   var I18N = window.__I18N__ || { es: {}, en: {} };
-  var currentLang = "es";
+  function detectInitialLang() {
+    var browserLang = (navigator.language || (navigator.languages && navigator.languages[0]) || "es");
+    return /^en/i.test(browserLang) ? "en" : "es";
+  }
+  var currentLang = detectInitialLang();
   function t(key) {
     var dict = I18N[currentLang] || I18N.es || {};
     return dict[key] != null ? dict[key] : key;
@@ -203,6 +222,11 @@
         }
       });
     });
+    // Social proof toast text isn't marked [data-i18n] (it's built from a
+    // template, not static markup) — re-render whichever toast is on
+    // screen right now instead of leaving it in the old language until
+    // its own timer cycles it out.
+    if (refreshSocialProofToast) refreshSocialProofToast();
   }
 
   function initLangToggle() {
@@ -724,37 +748,46 @@
       return loc;
     }
 
-    function buildMessage(type) {
-      if (type === "visitors") {
-        var count = pickRandom(sp.visitorCounts || [3]);
+    // Data (type/name/location/count) is picked once per toast; the text is
+    // rebuilt from that same data whenever the language changes, so a
+    // relanguage doesn't also reroll which toast is showing.
+    var currentState = null;
+    function pickState(type) {
+      if (type === "visitors") return { type: type, count: pickRandom(sp.visitorCounts || [3]) };
+      if (type === "purchase") return { type: type, name: pickRandom(sp.names), loc: nextLocation() };
+      return { type: type };
+    }
+
+    function buildMessage(state) {
+      if (state.type === "visitors") {
         return {
           icon: SP_ICONS.visitors,
-          text: fillTemplate(t("socialproof.visitors"), { count: count }),
+          text: fillTemplate(t("socialproof.visitors"), { count: state.count }),
           meta: ""
         };
       }
-      if (type === "purchase") {
-        var name = pickRandom(sp.names);
-        var loc = nextLocation();
-        var city = loc ? loc.city : "";
+      if (state.type === "purchase") {
         var product = t("socialproof.product") || sp.product || data.name;
         return {
           icon: SP_ICONS.purchase,
-          text: fillTemplate(t("socialproof.purchase"), { name: name, city: city, product: product }),
+          text: fillTemplate(t("socialproof.purchase"), { name: state.name, city: state.loc ? state.loc.city : "", product: product }),
           meta: t("socialproof.timeAgo")
         };
       }
       return { isRating: true, score: sp.rating || 4.8, text: t("socialproof.ratingText") };
     }
 
-    function showSpToast() {
-      var type = nextType();
-      var msg = buildMessage(type);
+    // Rebuilds the toast markup from currentState in the current language.
+    // Used both to mount a fresh toast and to retranslate one already on
+    // screen — the second case must NOT touch the is-visible class/timers.
+    function renderToast() {
+      var msg = buildMessage(currentState);
+      var wasVisible = !!$("[data-sp-toast].is-visible", stack);
 
       if (msg.isRating) {
         // sección 2.4 — reutiliza la estructura .hero-rating-lead del Hero/Oferta
         stack.innerHTML =
-          '<div class="sp-toast is-rating" data-sp-toast>' +
+          '<div class="sp-toast is-rating' + (wasVisible ? " is-visible" : "") + '" data-sp-toast>' +
             '<div class="sp-toast-body">' +
               '<span class="hero-rating-lead">' +
                 '<span class="hero-rating-stars" aria-hidden="true">' + starsSvg("toast") + "</span>" +
@@ -765,7 +798,7 @@
           "</div>";
       } else {
         stack.innerHTML =
-          '<div class="sp-toast" data-sp-toast>' +
+          '<div class="sp-toast' + (wasVisible ? " is-visible" : "") + '" data-sp-toast>' +
             '<span class="sp-toast-icon">' + msg.icon + "</span>" +
             '<span class="sp-toast-body">' +
               "<span class=\"sp-toast-text\">" + msg.text + "</span>" +
@@ -773,11 +806,23 @@
             "</span>" +
           "</div>";
       }
-      var node = $("[data-sp-toast]", stack);
-      requestAnimationFrame(function () { node.classList.add("is-visible"); });
+    }
 
+    function showSpToast() {
+      currentState = pickState(nextType());
+      renderToast();
+      requestAnimationFrame(function () {
+        var node = $("[data-sp-toast]", stack);
+        if (node) node.classList.add("is-visible");
+      });
+
+      // Re-query on fire rather than closing over the node renderToast()
+      // returned — a language switch while this toast is visible replaces
+      // it with a new element (see refreshSocialProofToast), and this timer
+      // must fade out whichever element is actually live, not the stale one.
       setTimeout(function () {
-        node.classList.remove("is-visible");
+        var node = $("[data-sp-toast]", stack);
+        if (node) node.classList.remove("is-visible");
         setTimeout(scheduleNext, 250);
       }, SP_CONFIG.visibleMs);
     }
@@ -788,12 +833,19 @@
     }
 
     setTimeout(showSpToast, SP_CONFIG.firstDelayMs);
+
+    refreshSocialProofToast = function () {
+      if (!currentState) return;
+      if (!$("[data-sp-toast].is-visible", stack)) return;
+      renderToast();
+    };
   }
 
   /* -------------------------------------------------------------
      Boot
      ------------------------------------------------------------- */
   function boot() {
+    safe(initFontStylesheets, "initFontStylesheets");
     safe(initWhatsAppLinks, "initWhatsAppLinks");
     safe(initWhatsapp, "initWhatsapp");
     safe(initNav, "initNav");

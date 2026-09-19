@@ -998,17 +998,22 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 /* --- transform showcase: libreta manuscrita → mockup digital (cross-fade en loop) --- */
 .transform-showcase { display: flex; flex-direction: column; gap: 1.1rem; }
 .transform-stage {
-  position: relative;
+  display: grid;
   width: 100%;
   max-width: 500px;
   margin-inline: auto;
-  min-height: 660px;
   perspective: 1400px;
 }
 .transform-notebook,
 .transform-digital {
-  position: absolute;
-  inset: 0;
+  /* Both stacked in the same grid cell instead of position:absolute — this
+     is what makes the cross-fade overlap work AND lets the grid track size
+     itself to the tallest of the two (the quote-doc mockup, in practice),
+     so .transform-stage always reserves the real space it needs instead of
+     a fixed min-height that could be shorter than the rendered content on
+     narrow/tall mobile viewports. */
+  grid-area: 1 / 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;

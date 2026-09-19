@@ -1,12 +1,9 @@
 /* ==========================================================================
    CateringTools — i18n dictionary (ES / EN)
-   Covers the full landing page copy, including the "Personalización" stage
-   mockups (pv.mockup.*). The Hero / "Imagínalo" / "El problema" product-
-   screenshot mockups are static English micro-copy by design (they
-   represent a real screenshot of the English product UI, same as a baked-in
-   product photo) and don't use data-i18n. The handwritten notebook scribble
-   is separate decorative chrome and stays Spanish-only, same as the text
-   baked into the original PNG mockups.
+   Covers the full landing page copy, including every product-screenshot
+   mockup (qb.*, rm.*, qd.*, pv.mockup.*, nb.*) and the handwritten notebook
+   scribble (nb.*). All of it is wired through data-i18n and switches with
+   the language toggle — none of the mockups are static-language chrome.
    ========================================================================== */
 (function () {
   "use strict";
@@ -20,6 +17,12 @@
       "a11y.openMenu": "Abrir menú",
       "a11y.closeMenu": "Cerrar menú",
       "a11y.mobileNav": "Menú de navegación",
+
+      "nb.catering": "CATERING",
+      "nb.waiters": "Meseros x4",
+      "nb.tableware": "Vajilla x120",
+      "nb.setup": "Montaje",
+      "nb.total": "TOTAL",
 
       "nav.item.home": "Inicio",
       "nav.item.problem": "El problema",
@@ -41,7 +44,7 @@
       "socialproof.product": "CateringTools",
       "socialproof.timeAgo": "Hace un momento",
       "socialproof.ratingText":
-        "Empresas de catering en México ya confían en CateringTools para cotizar sus eventos",
+        "Empresas de catering en México y Estados Unidos ya confían en CateringTools para cotizar sus eventos",
 
       "urgency.label": "Oferta por tiempo limitado",
       "urgency.min": "MIN",
@@ -124,6 +127,84 @@
       "pv.mockup.tagSetup": "Montaje y decoración",
       "pv.mockup.tagGlassware": "Cristalería de autor",
       "pv.mockup.quoteTotal": "Total de la cotización",
+
+      /* Shared micro-copy reused across the Hero / "Imagínalo" / "El problema"
+         product-screenshot mockups (qb.*, rm.*, qd.* below) wherever they
+         show the exact same word or phrase — avoids re-translating the same
+         string three times. */
+      "mockup.client": "Cliente",
+      "mockup.eventType": "Tipo de evento",
+      "mockup.date": "Fecha",
+      "mockup.guests": "Invitados",
+      "mockup.location": "Ubicación",
+      "mockup.clientAndEvent": "Cliente y evento",
+      "mockup.services": "Servicios",
+      "mockup.financialSummary": "Resumen financiero",
+      "mockup.subtotal": "Subtotal",
+      "mockup.discount10": "Descuento (10%)",
+      "mockup.salesTax16": "IVA (16%)",
+      "mockup.total": "Total",
+      "mockup.paymentTerms": "Condiciones de pago",
+      "mockup.depositRequired50": "Anticipo requerido (50%)",
+      "mockup.balanceDue": "Saldo pendiente",
+      "mockup.paymentDueDate": "Fecha límite de pago",
+      "mockup.packagePremium": "Paquete Premium",
+      "mockup.floralDecor": "Decoración floral",
+      "mockup.wedding": "Boda",
+      "mockup.thankYou": "Gracias por confiar en nosotros",
+      "mockup.venueLocation": "Jardín Los Encinos, CDMX",
+      "mockup.dateSep18": "18 sep 2026",
+      "mockup.dateNov14": "14 nov 2026",
+      "mockup.dateOct3": "3 oct 2026",
+      "mockup.dateSep30": "30 sep 2026",
+
+      /* Hero mockup ("New quote" screen) */
+      "qb.eventQuotingTool": "Herramienta de cotización",
+      "qb.navQuotes": "Cotizaciones",
+      "qb.navClients": "Clientes",
+      "qb.navSettings": "Configuración",
+      "qb.specializedQuotingTool": "Cotizador especializado",
+      "qb.searchPlaceholder": "Buscar servicios...",
+      "qb.autosaved": "Guardado automático",
+      "qb.eyebrow": "Cotizador de catering",
+      "qb.pageSubtitle": "Completa los detalles, elige tus servicios y genera una cotización profesional.",
+      "qb.market": "Mercado",
+      "qb.marketValue": "Estados Unidos",
+      "qb.language": "Idioma",
+      "qb.languageValue": "Español",
+      "qb.currency": "Moneda",
+      "qb.stepCustomer": "Cliente",
+      "qb.stepEvent": "Evento",
+      "qb.stepCustom": "Personal.",
+      "qb.stepReview": "Revisar",
+      "qb.stepQuote": "Cotización",
+      "qb.cardCustomerInfo": "Información del cliente",
+      "qb.cardSummaryEvent": "Boda · 18 de septiembre, 2026 · 150 invitados",
+      "qb.cardSummaryServices": "Paquete Premium · Servicio en sitio",
+      "qb.cardReviewSummary": "Resumen completo y cálculo final.",
+      "qb.type": "Tipo",
+      "qb.discountLabel": "Descuento",
+      "qb.notApplicable": "No aplica",
+      "qb.salesTax14": "IVA (14%)",
+
+      /* Review mockup ("Imagínalo") */
+      "rm.reviewDesc": "Confirma los detalles antes de generar la cotización",
+      "rm.serviceMetaPremium": "120 invitados · Incluye banquete, barra libre y mobiliario",
+      "rm.oneService": "1 servicio",
+      "rm.djAndSound": "DJ y sonido",
+      "rm.continueBtn": "Confirmar y continuar",
+
+      /* Quote document mockup ("El problema") */
+      "qd.tagline": "BANQUETES Y EVENTOS ESPECIALES",
+      "qd.quoteAbbrev": "COT.",
+      "qd.issueDate": "Emisión: 18 sep 2026",
+      "qd.validFor": "Válida por 15 días",
+      "qd.eventInfo": "Información del evento",
+      "qd.quotedServices": "Servicios cotizados",
+      "qd.service": "Servicio",
+      "qd.qty": "Cant.",
+      "qd.amount": "Importe",
+      "qd.includes": "Incluye: banquete completo, barra libre, mobiliario y personal de servicio",
 
       "pasos.eyebrow": "El proceso",
       "pasos.headline": "Configurado una vez. Utilizado una y otra vez.",
@@ -254,6 +335,12 @@
       "a11y.closeMenu": "Close menu",
       "a11y.mobileNav": "Navigation menu",
 
+      "nb.catering": "CATERING",
+      "nb.waiters": "Waiters x4",
+      "nb.tableware": "Tableware x120",
+      "nb.setup": "Setup",
+      "nb.total": "TOTAL",
+
       "nav.item.home": "Home",
       "nav.item.problem": "The problem",
       "nav.item.solution": "Solution",
@@ -274,7 +361,7 @@
       "socialproof.product": "CateringTools",
       "socialproof.timeAgo": "Just now",
       "socialproof.ratingText":
-        "Catering businesses in Mexico already trust CateringTools to quote their events",
+        "Catering businesses in Mexico and the United States already trust CateringTools to quote their events",
 
       "urgency.label": "Limited-time offer",
       "urgency.min": "MIN",
@@ -357,6 +444,77 @@
       "pv.mockup.tagSetup": "Setup & decor",
       "pv.mockup.tagGlassware": "Signature glassware",
       "pv.mockup.quoteTotal": "Quote total",
+
+      "mockup.client": "Client",
+      "mockup.eventType": "Event type",
+      "mockup.date": "Date",
+      "mockup.guests": "Guests",
+      "mockup.location": "Location",
+      "mockup.clientAndEvent": "Client and event",
+      "mockup.services": "Services",
+      "mockup.financialSummary": "Financial summary",
+      "mockup.subtotal": "Subtotal",
+      "mockup.discount10": "Discount (10%)",
+      "mockup.salesTax16": "Sales Tax (16%)",
+      "mockup.total": "Total",
+      "mockup.paymentTerms": "Payment terms",
+      "mockup.depositRequired50": "Deposit required (50%)",
+      "mockup.balanceDue": "Balance due",
+      "mockup.paymentDueDate": "Payment due date",
+      "mockup.packagePremium": "Package Premium",
+      "mockup.floralDecor": "Floral decor",
+      "mockup.wedding": "Wedding",
+      "mockup.thankYou": "Thank you for your trust",
+      "mockup.venueLocation": "Jardín Los Encinos, Mexico City",
+      "mockup.dateSep18": "Sep 18, 2026",
+      "mockup.dateNov14": "Nov 14, 2026",
+      "mockup.dateOct3": "Oct 3, 2026",
+      "mockup.dateSep30": "Sep 30, 2026",
+
+      "qb.eventQuotingTool": "Event Quoting Tool",
+      "qb.navQuotes": "Quotes",
+      "qb.navClients": "Clients",
+      "qb.navSettings": "Settings",
+      "qb.specializedQuotingTool": "Specialized quoting tool",
+      "qb.searchPlaceholder": "Search services...",
+      "qb.autosaved": "Autosaved",
+      "qb.eyebrow": "Catering quote builder",
+      "qb.pageSubtitle": "Fill in the details, choose your services, and generate a professional quote.",
+      "qb.market": "Market",
+      "qb.marketValue": "United States",
+      "qb.language": "Language",
+      "qb.languageValue": "English",
+      "qb.currency": "Currency",
+      "qb.stepCustomer": "Customer",
+      "qb.stepEvent": "Event",
+      "qb.stepCustom": "Custom.",
+      "qb.stepReview": "Review",
+      "qb.stepQuote": "Quote",
+      "qb.cardCustomerInfo": "Customer Information",
+      "qb.cardSummaryEvent": "Wedding · September 18, 2026 · 150 guests",
+      "qb.cardSummaryServices": "Package Premium · On-site service",
+      "qb.cardReviewSummary": "Full summary and final calculation.",
+      "qb.type": "Type",
+      "qb.discountLabel": "Discount",
+      "qb.notApplicable": "Not applicable",
+      "qb.salesTax14": "Sales Tax (14%)",
+
+      "rm.reviewDesc": "Confirm the details before generating the quote",
+      "rm.serviceMetaPremium": "120 guests · Includes banquet, open bar and furniture",
+      "rm.oneService": "1 service",
+      "rm.djAndSound": "DJ and sound",
+      "rm.continueBtn": "Confirm and continue",
+
+      "qd.tagline": "BANQUETS & SPECIAL EVENTS",
+      "qd.quoteAbbrev": "QUOTE",
+      "qd.issueDate": "Issued: Sep 18, 2026",
+      "qd.validFor": "Valid for 15 days",
+      "qd.eventInfo": "Event information",
+      "qd.quotedServices": "Quoted services",
+      "qd.service": "Service",
+      "qd.qty": "Qty.",
+      "qd.amount": "Amount",
+      "qd.includes": "Includes: full banquet, open bar, furniture and service staff",
 
       "pasos.eyebrow": "The process",
       "pasos.headline": "Set up once. Used again and again.",

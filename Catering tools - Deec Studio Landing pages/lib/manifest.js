@@ -40,7 +40,7 @@
       encodeURIComponent(WHATSAPP_MESSAGE),
 
     /* ⚠️ DATOS DE DEMOSTRACIÓN — declarado explícitamente por regla de IMPLEMENTATION.md.
-       Estos nombres/ciudades/contadores NO son eventos reales. Antes de publicar,
+       Estos nombres/ubicaciones/contadores NO son eventos reales. Antes de publicar,
        decide: (a) dejar isDemoData:true y mantenerlos como contenido ilustrativo, o
        (b) poner isDemoData:false y conectar names/visitorCounts a datos reales
        (webhook de ventas, analytics), nunca presentar la lista fija como compras reales. */
