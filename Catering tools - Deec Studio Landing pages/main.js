@@ -54,14 +54,38 @@
   }
 
   /* -------------------------------------------------------------
-     WhatsApp CTA (buy buttons) — single source of truth from manifest
+     Checkout modal — every [data-cta-buy] button opens this instead
+     of navigating away. Embeds Whop's own hosted checkout page in an
+     iframe (see index.html for why: that's the origin Whop has
+     approved for Apple Pay/Google Pay, unlike their JS "Elements"
+     widget which draws the form on our own origin).
+     href="#oferta" on the buttons stays as a plain anchor fallback
+     if JS is unavailable.
      ------------------------------------------------------------- */
-  function initWhatsAppLinks() {
-    if (!data.whatsappUrl) return;
-    $$("[data-cta-buy]").forEach(function (el) {
-      el.setAttribute("href", data.whatsappUrl);
-      el.setAttribute("target", "_blank");
-      el.setAttribute("rel", "noopener");
+  function initCheckoutModal() {
+    var modal = $("[data-checkout-modal]");
+    var backdrop = $("[data-checkout-modal-backdrop]");
+    var closeBtn = $("[data-checkout-modal-close]");
+    var triggers = $$("[data-cta-buy]");
+    if (!modal || !triggers.length) return;
+
+    function open(e) {
+      if (e) e.preventDefault();
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(function () { modal.classList.add("is-open"); });
+    }
+    function close() {
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+      setTimeout(function () { modal.hidden = true; }, 300);
+    }
+
+    triggers.forEach(function (btn) { btn.addEventListener("click", open); });
+    if (backdrop) backdrop.addEventListener("click", close);
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hidden) close();
     });
   }
 
@@ -846,7 +870,7 @@
      ------------------------------------------------------------- */
   function boot() {
     safe(initFontStylesheets, "initFontStylesheets");
-    safe(initWhatsAppLinks, "initWhatsAppLinks");
+    safe(initCheckoutModal, "initCheckoutModal");
     safe(initWhatsapp, "initWhatsapp");
     safe(initNav, "initNav");
     safe(initNavHeight, "initNavHeight");

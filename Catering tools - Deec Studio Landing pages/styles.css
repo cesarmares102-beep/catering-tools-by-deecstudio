@@ -2274,6 +2274,75 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 .accordion-cat-panel .accordion-item:last-child { padding-bottom: .8rem; }
 
 /* =============================================================
+   15i. Checkout modal — every [data-cta-buy] button opens this;
+   embeds Whop's own hosted checkout in an iframe (see index.html).
+   ============================================================= */
+.checkout-modal[hidden] { display: none; }
+.checkout-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.checkout-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 29, 23, 0.6);
+  opacity: 0;
+  transition: opacity .3s var(--ease-out);
+}
+.checkout-modal.is-open .checkout-modal-backdrop { opacity: 1; }
+.checkout-modal-panel {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 4px;
+  box-shadow: var(--shadow-lift);
+  padding: 2.5rem 1.5rem 1.5rem;
+  opacity: 0;
+  transform: translateY(16px) scale(.98);
+  transition: opacity .3s var(--ease-out), transform .3s var(--ease-out);
+}
+.checkout-modal.is-open .checkout-modal-panel { opacity: 1; transform: translateY(0) scale(1); }
+.checkout-modal-close {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--ink-mute);
+  transition: color .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+.checkout-modal-close:hover { color: var(--ink); border-color: var(--moss); }
+
+/* An iframe pointed at a cross-origin checkout page can't report its own
+   content height back to us (that needs the child page to postMessage it,
+   which Whop's hosted checkout doesn't), so it gets a fixed min-height
+   instead of auto-sizing to content. */
+#whop-checkout { min-height: 640px; }
+#whop-checkout iframe { display: block; width: 100%; height: 100%; min-height: 640px; border: 0; }
+
+@media (max-width: 539px) {
+  .checkout-modal { padding: 0; align-items: flex-end; }
+  .checkout-modal-panel { width: 100%; max-height: 92vh; border-radius: 12px 12px 0 0; }
+}
+
+/* =============================================================
    16. Responsive
    ============================================================= */
 @media (min-width: 540px) {

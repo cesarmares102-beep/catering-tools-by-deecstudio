@@ -33,7 +33,7 @@
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-<link rel="stylesheet" href="styles.css?v=20260919g" />
+<link rel="stylesheet" href="styles.css?v=20260919h" />
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skipLink">Saltar al contenido</a>
@@ -1273,8 +1273,24 @@
   </div>
 </footer>
 
-<script defer src="lib/manifest.js?v=20260919g"></script>
-<script defer src="lib/i18n.js?v=20260919g"></script>
-<script defer src="main.js?v=20260919g"></script>
+<!-- Checkout modal — every [data-cta-buy] button opens this instead of
+     navigating. Embeds Whop's own hosted checkout page in an iframe
+     (whop.com is the origin Whop has approved for Apple Pay/Google Pay;
+     their JS "Elements" widget draws the form on OUR origin instead,
+     which Google Pay in particular never approves for third-party
+     domains — see _headers for the matching CSP/Permissions-Policy). -->
+<div class="checkout-modal" data-checkout-modal hidden>
+  <div class="checkout-modal-backdrop" data-checkout-modal-backdrop></div>
+  <div class="checkout-modal-panel" role="dialog" aria-modal="true" data-i18n-aria="a11y.checkoutDialog" aria-label="Pago">
+    <button type="button" class="checkout-modal-close" data-checkout-modal-close data-i18n-aria="a11y.closeCheckout" aria-label="Cerrar">&times;</button>
+    <div id="whop-checkout">
+      <iframe src="https://whop.com/checkout/plan_GLifvy5XFV15e" title="Checkout" allow="payment"></iframe>
+    </div>
+  </div>
+</div>
+
+<script defer src="lib/manifest.js?v=20260919h"></script>
+<script defer src="lib/i18n.js?v=20260919h"></script>
+<script defer src="main.js?v=20260919h"></script>
 </body>
 </html>
