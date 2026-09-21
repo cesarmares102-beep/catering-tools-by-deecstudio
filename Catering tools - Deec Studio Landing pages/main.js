@@ -55,10 +55,12 @@
 
   /* -------------------------------------------------------------
      Checkout modal — every [data-cta-buy] button opens this instead
-     of navigating away. Embeds Whop's own hosted checkout page in an
-     iframe (see index.html for why: that's the origin Whop has
-     approved for Apple Pay/Google Pay, unlike their JS "Elements"
-     widget which draws the form on our own origin).
+     of navigating away. This function only handles open/close/backdrop/
+     Escape/the loading placeholder — it doesn't know or care what's
+     mounted inside #whop-checkout (a plain iframe to Whop's hosted
+     checkout page, already in the markup — see index.html for why this
+     specific method and not the js.whop.com/cdn.whop.com alternatives
+     tried in between).
      href="#oferta" on the buttons stays as a plain anchor fallback
      if JS is unavailable.
      ------------------------------------------------------------- */
@@ -67,13 +69,38 @@
     var backdrop = $("[data-checkout-modal-backdrop]");
     var closeBtn = $("[data-checkout-modal-close]");
     var triggers = $$("[data-cta-buy]");
+    var loading = $("[data-checkout-loading]");
     if (!modal || !triggers.length) return;
+
+    // The loading placeholder sits above the embed's iframe (z-index) and
+    // stays up for a fixed beat even after that iframe element appears,
+    // since it still renders blank for a moment while its own page
+    // (whop.com) loads — there's no cross-origin signal telling us when
+    // that's actually done, so a short fixed delay is what smooths over
+    // that gap instead of flashing an empty white box.
+    var loadingHidden = false;
+    function hideLoading() {
+      if (loadingHidden || !loading) return;
+      loadingHidden = true;
+      loading.classList.add("is-hidden");
+    }
 
     function open(e) {
       if (e) e.preventDefault();
       modal.hidden = false;
       document.body.style.overflow = "hidden";
-      requestAnimationFrame(function () { modal.classList.add("is-open"); });
+      // Force a synchronous layout flush between removing [hidden] and
+      // adding .is-open, instead of requestAnimationFrame — rAF can be
+      // throttled/delayed (backgrounded tab, low-power mode, some
+      // automation contexts), which left the modal technically open but
+      // stuck at opacity:0 (invisible) until it fired. This read forces
+      // the browser to commit the hidden->visible change first, so the
+      // very next style change (.is-open) still transitions instead of
+      // getting coalesced away — and it happens on the same tick, not a
+      // deferred callback that might not run promptly.
+      void modal.offsetHeight;
+      modal.classList.add("is-open");
+      if (!loadingHidden) setTimeout(hideLoading, 1800);
     }
     function close() {
       modal.classList.remove("is-open");
@@ -184,10 +211,11 @@
     function open() {
       panel.hidden = false;
       backdrop.hidden = false;
-      requestAnimationFrame(function () {
-        panel.classList.add("is-open");
-        backdrop.classList.add("is-open");
-      });
+      // See initCheckoutModal's open() for why this is a forced reflow
+      // instead of requestAnimationFrame.
+      void panel.offsetHeight;
+      panel.classList.add("is-open");
+      backdrop.classList.add("is-open");
       toggle.setAttribute("aria-expanded", "true");
       toggle.setAttribute("aria-label", t("a11y.closeMenu"));
     }
@@ -835,10 +863,13 @@
     function showSpToast() {
       currentState = pickState(nextType());
       renderToast();
-      requestAnimationFrame(function () {
-        var node = $("[data-sp-toast]", stack);
-        if (node) node.classList.add("is-visible");
-      });
+      // See initCheckoutModal's open() for why this is a forced reflow
+      // instead of requestAnimationFrame.
+      var node = $("[data-sp-toast]", stack);
+      if (node) {
+        void node.offsetHeight;
+        node.classList.add("is-visible");
+      }
 
       // Re-query on fire rather than closing over the node renderToast()
       // returned — a language switch while this toast is visible replaces

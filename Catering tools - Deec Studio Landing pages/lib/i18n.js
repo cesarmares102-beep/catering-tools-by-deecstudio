@@ -19,6 +19,7 @@
       "a11y.mobileNav": "Menú de navegación",
       "a11y.checkoutDialog": "Pago",
       "a11y.closeCheckout": "Cerrar",
+      "checkout.loading": "Cargando pago…",
 
       "nb.catering": "CATERING",
       "nb.waiters": "Meseros x4",
@@ -338,6 +339,7 @@
       "a11y.mobileNav": "Navigation menu",
       "a11y.checkoutDialog": "Checkout",
       "a11y.closeCheckout": "Close",
+      "checkout.loading": "Loading payment…",
 
       "nb.catering": "CATERING",
       "nb.waiters": "Waiters x4",

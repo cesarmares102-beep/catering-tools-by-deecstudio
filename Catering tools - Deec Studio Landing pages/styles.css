@@ -2275,7 +2275,8 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 
 /* =============================================================
    15i. Checkout modal — every [data-cta-buy] button opens this;
-   embeds Whop's own hosted checkout in an iframe (see index.html).
+   embeds Whop's hosted checkout page directly in an iframe (see
+   index.html). This CSS only handles the modal chrome.
    ============================================================= */
 .checkout-modal[hidden] { display: none; }
 .checkout-modal {
@@ -2300,7 +2301,13 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   z-index: 1;
   background: var(--paper);
   width: min(480px, 100%);
+  /* dvh accounts for Safari's collapsing address bar — plain vh is taller
+     than the real visible area there, cutting off the bottom of the modal
+     (close button / end of the checkout form). vh first as a fallback for
+     browsers without dvh support; the second declaration wins where it's
+     supported. */
   max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
   border-radius: 4px;
   box-shadow: var(--shadow-lift);
@@ -2330,16 +2337,55 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 }
 .checkout-modal-close:hover { color: var(--ink); border-color: var(--moss); }
 
-/* An iframe pointed at a cross-origin checkout page can't report its own
-   content height back to us (that needs the child page to postMessage it,
-   which Whop's hosted checkout doesn't), so it gets a fixed min-height
-   instead of auto-sizing to content. */
-#whop-checkout { min-height: 640px; }
-#whop-checkout iframe { display: block; width: 100%; height: 100%; min-height: 640px; border: 0; }
+/* min-height is just a baseline so the modal doesn't collapse to an
+   empty box before the widget mounts — it sizes itself once it renders.
+   The iframe rule is a defensive fallback in case Whop's widget draws its
+   payment fields in a nested iframe internally (common for PCI
+   isolation); harmless if it doesn't. */
+#whop-checkout { min-height: 640px; position: relative; }
+#whop-checkout iframe { display: block; width: 100%; height: 100%; min-height: 640px; border: 0; position: relative; z-index: 1; }
+
+/* Shown until initCheckoutModal's hideLoading() fires (fixed delay after
+   the modal opens) — without it, the modal opens to a blank white box for
+   however long the iframe's own checkout page takes to load, which reads
+   as broken rather than "still loading". */
+.checkout-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  background: var(--paper);
+  color: var(--ink-mute);
+  font-size: .85rem;
+  opacity: 1;
+  transition: opacity .25s var(--ease-out);
+}
+.checkout-loading.is-hidden { opacity: 0; pointer-events: none; }
+.checkout-spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  border-top-color: var(--moss);
+  animation: checkoutSpin .8s linear infinite;
+}
+@keyframes checkoutSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .checkout-spinner { animation-duration: 2.4s; }
+}
 
 @media (max-width: 539px) {
   .checkout-modal { padding: 0; align-items: flex-end; }
-  .checkout-modal-panel { width: 100%; max-height: 92vh; border-radius: 12px 12px 0 0; }
+  .checkout-modal-panel {
+    width: 100%;
+    max-height: 92vh;
+    max-height: 92dvh;
+    border-radius: 12px 12px 0 0;
+  }
 }
 
 /* =============================================================

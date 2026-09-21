@@ -33,7 +33,7 @@
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-<link rel="stylesheet" href="styles.css?v=20260919h" />
+<link rel="stylesheet" href="styles.css?v=20260921h" />
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skipLink">Saltar al contenido</a>
@@ -1274,23 +1274,32 @@
 </footer>
 
 <!-- Checkout modal — every [data-cta-buy] button opens this instead of
-     navigating. Embeds Whop's own hosted checkout page in an iframe
-     (whop.com is the origin Whop has approved for Apple Pay/Google Pay;
-     their JS "Elements" widget draws the form on OUR origin instead,
-     which Google Pay in particular never approves for third-party
-     domains — see _headers for the matching CSP/Permissions-Policy). -->
+     navigating, embedding Whop's own hosted checkout page directly in an
+     iframe. Its origin (whop.com) is the one already approved for Apple
+     Pay/Google Pay — confirmed against the live deecstudio-gardentools.online
+     reference, which uses this exact method (plain iframe, no js.whop.com
+     or cdn.whop.com script at all) and has working wallets. We tried the
+     js.whop.com embed loader and the cdn.whop.com "Elements" widget in
+     between based on secondhand guidance that turned out not to match
+     what's actually deployed and working on the reference site — don't
+     switch away from this plain-iframe method again without first diffing
+     against that site's live HTML/headers, the way this was resolved. -->
 <div class="checkout-modal" data-checkout-modal hidden>
   <div class="checkout-modal-backdrop" data-checkout-modal-backdrop></div>
   <div class="checkout-modal-panel" role="dialog" aria-modal="true" data-i18n-aria="a11y.checkoutDialog" aria-label="Pago">
     <button type="button" class="checkout-modal-close" data-checkout-modal-close data-i18n-aria="a11y.closeCheckout" aria-label="Cerrar">&times;</button>
     <div id="whop-checkout">
+      <div class="checkout-loading" data-checkout-loading aria-hidden="true">
+        <span class="checkout-spinner"></span>
+        <span data-i18n="checkout.loading">Cargando pago…</span>
+      </div>
       <iframe src="https://whop.com/checkout/plan_GLifvy5XFV15e" title="Checkout" allow="payment"></iframe>
     </div>
   </div>
 </div>
 
-<script defer src="lib/manifest.js?v=20260919h"></script>
-<script defer src="lib/i18n.js?v=20260919h"></script>
-<script defer src="main.js?v=20260919h"></script>
+<script defer src="lib/manifest.js?v=20260921h"></script>
+<script defer src="lib/i18n.js?v=20260921h"></script>
+<script defer src="main.js?v=20260921h"></script>
 </body>
 </html>
