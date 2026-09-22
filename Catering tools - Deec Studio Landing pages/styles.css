@@ -218,18 +218,28 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
   width: 100%;
   max-width: var(--container);
   margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 1.75rem);
+  /* px, not rem/vw-with-rem-bounds: the icons/flags/hamburger this row
+     holds are all fixed px sizes already, so rem-based padding/gaps here
+     could grow (e.g. on Android devices with a larger "font size"
+     accessibility setting) without the row's available width growing to
+     match, pushing the row past budget and wrapping nav-actions onto a
+     second line under the logo. That was compounding an already-tight
+     fit on ~360-390px phones even at 100% scale — see the extra
+     narrow-width tightening below (max-width: 719px / 374px). Fixed px
+     keeps this structural spacing immune to OS text-scaling, which is
+     meant for reading text, not fixed-size icon chrome. */
+  padding-inline: clamp(16px, 3vw, 28px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  row-gap: .6rem;
-  column-gap: 1rem;
+  row-gap: 10px;
+  column-gap: 16px;
 }
 .nav-brand { display: inline-flex; }
 .nav-brand-logo { height: 55px; width: auto; display: block; }
-.nav-actions { display: flex; align-items: center; gap: .7rem; }
-.nav-icons { display: flex; align-items: center; gap: .4rem; }
+.nav-actions { display: flex; align-items: center; gap: 11px; }
+.nav-icons { display: flex; align-items: center; gap: 6px; }
 .nav-icon-btn {
   width: 38px; height: 38px;
   border-radius: 50%;
@@ -242,7 +252,7 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 .nav-icon-btn svg { width: 17px; height: 17px; }
 .nav-icon-btn:hover { border-color: var(--moss); color: var(--moss); transform: translateY(-1px); }
 
-.lang-toggle { display: inline-flex; align-items: center; gap: .3rem; }
+.lang-toggle { display: inline-flex; align-items: center; gap: 5px; }
 .lang-btn {
   display: inline-flex; padding: 2px;
   border-radius: 2px;
@@ -326,9 +336,35 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 
 @media (max-width: 719px) {
   .nav-brand-logo { height: 44px; }
+  /* Matches .menu-toggle's own mobile size (34px) instead of staying at
+     the 38px desktop size — narrows the icon row just enough, alongside
+     the tighter gaps/padding below, to keep it on one line with the logo
+     on phones in the ~360-412px range (see the nav-inner comment above). */
+  .nav-icon-btn { width: 34px; height: 34px; }
   .menu-toggle { width: 34px; height: 34px; }
   .menu-panel { right: 1rem; width: min(90vw, 300px); }
   .lang-toggle .flag { width: 20px; height: 14px; }
+  .nav-inner { padding-inline: 12px; column-gap: 10px; }
+  .nav-actions { gap: 8px; }
+  .nav-icons { gap: 4px; }
+}
+
+@media (max-width: 374px) {
+  /* Narrowest phones (iPhone SE-class and small/budget Android, ≤360px)
+     need a bit more room back — shrinking the logo a step further than
+     the regular mobile size above is the same responsive-sizing pattern
+     already used between desktop (55px) and mobile (44px), just one more
+     step for this width range; the artwork/branding itself doesn't change.
+     Icon/hamburger buttons and padding get one more trim too — verified
+     down to 320px (iPhone SE width) with the row still fitting on one
+     line, including with Android's text-size accessibility setting maxed
+     out (tested by forcing the root font-size up to 150%). */
+  .nav-brand-logo { height: 38px; }
+  .nav-inner { padding-inline: 8px; column-gap: 8px; }
+  .nav-actions { gap: 6px; }
+  .lang-toggle { gap: 3px; }
+  .nav-icon-btn { width: 30px; height: 30px; }
+  .menu-toggle { width: 30px; height: 30px; }
 }
 
 /* =============================================================
