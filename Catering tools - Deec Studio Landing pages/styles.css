@@ -153,13 +153,6 @@ em { font-style: normal; color: var(--title-accent); font-family: inherit; font-
 [data-reveal][data-reveal-delay="4"] { transition-delay: .32s; }
 [data-reveal][data-reveal-delay="5"] { transition-delay: .40s; }
 
-.divider {
-  height: 1px;
-  background: var(--line);
-  border: 0;
-  margin: 0;
-}
-
 /* =============================================================
    4. Buttons
    ============================================================= */
