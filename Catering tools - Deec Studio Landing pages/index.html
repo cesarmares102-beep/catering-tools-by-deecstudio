@@ -14,7 +14,19 @@
      hit this specific request. See also the css/js Cache-Control in
      _headers/.htaccess (stale-while-revalidate/stale-if-error) for the
      other half of this fix. -->
-<link rel="stylesheet" href="styles.css?v=20260921i" />
+<link rel="stylesheet" href="styles.css?v=20260921j" />
+
+<!-- Whop tracking pixel (conversion/attribution for the checkout funnel).
+     CSP script-src is 'self' only with no 'unsafe-inline' — this exact
+     inline script is allowlisted by its SHA-256 hash in _headers/.htaccess
+     instead, so it runs while arbitrary injected inline scripts still
+     don't (see the security-audit finding this was added after: script-src
+     'self' with no unsafe-inline was the reason there's no exploitable XSS
+     path). If you ever edit so much as a character of this snippet, the
+     hash in both header files must be recomputed to match or it'll be
+     silently blocked. t.whop.tw is also allowlisted in script-src (loads
+     s.js) and connect-src (sends tracking events). -->
+<script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_z27YXAf3J61uO9");whop.track("page");</script>
 
 <title>CateringTools — Tu cotizador web personalizado para catering</title>
 <meta name="description" content="CateringTools convierte tus servicios, precios y reglas de cobro en una herramienta que genera presupuestos y cotizaciones profesionales en minutos. Pago único de $49.99 USD, sin suscripciones." />
@@ -1325,8 +1337,8 @@
   </div>
 </div>
 
-<script defer src="lib/manifest.js?v=20260921i"></script>
-<script defer src="lib/i18n.js?v=20260921i"></script>
-<script defer src="main.js?v=20260921i"></script>
+<script defer src="lib/manifest.js?v=20260921j"></script>
+<script defer src="lib/i18n.js?v=20260921j"></script>
+<script defer src="main.js?v=20260921j"></script>
 </body>
 </html>
