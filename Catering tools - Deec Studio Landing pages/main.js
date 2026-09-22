@@ -10,6 +10,7 @@
   var fineHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var refreshSocialProofToast = null; // set by initSocialProof(), called from applyLanguage()
+  var syncCheckoutModalLocale = null; // set by initCheckoutModal(), called from applyLanguage()
 
   function safe(fn, name) {
     try { fn(); } catch (e) { if (window.console) console.warn("[" + name + "]", e); }
@@ -70,6 +71,7 @@
     var closeBtn = $("[data-checkout-modal-close]");
     var triggers = $$("[data-cta-buy]");
     var loading = $("[data-checkout-loading]");
+    var iframe = $("#whop-checkout iframe");
     if (!modal || !triggers.length) return;
 
     // The loading placeholder sits above the embed's iframe (z-index) and
@@ -84,9 +86,53 @@
       loadingHidden = true;
       loading.classList.add("is-hidden");
     }
+    function showLoading() {
+      if (!loading) return;
+      loadingHidden = false;
+      loading.classList.remove("is-hidden");
+    }
+
+    // Two separate Whop plans, not a ?locale= query param — /checkout/{plan}
+    // (the only path confirmed to keep the product summary and Apple/Google
+    // Pay; /embedded/checkout/ was tried twice and dropped both, see the
+    // comment on the modal markup in index.html) doesn't honor ?locale= at
+    // all. Each plan already carries its own title/description in Whop's
+    // dashboard, so picking the plan by currentLang gets those two fields
+    // to match the page. The payment FORM itself (email, card, pay button)
+    // still follows the buyer's own browser language — Whop decides that
+    // from the plain /checkout/ page, not us, and there's no code-side fix
+    // for it here.
+    var PLAN_ES = "plan_GLifvy5XFV15e";
+    var PLAN_EN = "plan_VmdTbp7UKyDnF";
+    function checkoutSrc(lang) {
+      return "https://whop.com/checkout/" + (lang === "en" ? PLAN_EN : PLAN_ES);
+    }
+    function syncCheckoutLocale() {
+      if (!iframe) return;
+      var next = checkoutSrc(currentLang);
+      if (iframe.getAttribute("src") !== next) {
+        showLoading();
+        iframe.src = next;
+      }
+    }
+    syncCheckoutModalLocale = syncCheckoutLocale;
+
+    // Warm the iframe up on the first real signal of buying intent —
+    // hover on desktop, touch on mobile — instead of waiting for the
+    // click that actually opens the modal. Whop's checkout is a full
+    // cross-origin page load (DNS/TLS/JS bundle), so by the time open()
+    // runs it's often already most of the way loaded instead of starting
+    // from zero. syncCheckoutLocale() itself is guarded against reloading
+    // a src that's already current, so repeated hovers are harmless.
+    triggers.forEach(function (btn) {
+      btn.addEventListener("mouseenter", syncCheckoutLocale);
+      btn.addEventListener("touchstart", syncCheckoutLocale, { passive: true });
+      btn.addEventListener("focus", syncCheckoutLocale);
+    });
 
     function open(e) {
       if (e) e.preventDefault();
+      syncCheckoutLocale();
       modal.hidden = false;
       document.body.style.overflow = "hidden";
       // Force a synchronous layout flush between removing [hidden] and
@@ -279,6 +325,7 @@
     // screen right now instead of leaving it in the old language until
     // its own timer cycles it out.
     if (refreshSocialProofToast) refreshSocialProofToast();
+    if (syncCheckoutModalLocale) syncCheckoutModalLocale();
   }
 
   function initLangToggle() {

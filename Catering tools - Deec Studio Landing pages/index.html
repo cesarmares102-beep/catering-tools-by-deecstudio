@@ -14,6 +14,11 @@
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Warms up DNS/TLS to Whop ahead of time so the checkout iframe (loaded
+     lazily on hover/touch/click of a "Comprar ahora" button — see main.js
+     initCheckoutModal) doesn't pay that latency at the moment it's needed.
+     Doesn't load any Whop page content or cookies by itself. -->
+<link rel="preconnect" href="https://whop.com" crossorigin>
 
 <!-- Web fonts — loaded non-render-blocking (media="print" swapped to "all"
      by main.js, no inline JS so this stays CSP-safe under script-src 'self').
@@ -44,7 +49,7 @@
 <header class="nav" data-nav>
   <div class="nav-inner">
     <a class="nav-brand" href="#top" aria-label="CateringTools">
-      <img class="nav-brand-logo" alt="CateringTools" width="165" height="55" src="assets/logo-cateringtools.svg" />
+      <img class="nav-brand-logo" alt="CateringTools" width="149" height="55" src="assets/logo-cateringtools.svg" />
     </a>
     <div class="nav-actions">
       <div class="nav-icons">
@@ -1277,13 +1282,19 @@
      navigating, embedding Whop's own hosted checkout page directly in an
      iframe. Its origin (whop.com) is the one already approved for Apple
      Pay/Google Pay — confirmed against the live deecstudio-gardentools.online
-     reference, which uses this exact method (plain iframe, no js.whop.com
-     or cdn.whop.com script at all) and has working wallets. We tried the
-     js.whop.com embed loader and the cdn.whop.com "Elements" widget in
-     between based on secondhand guidance that turned out not to match
-     what's actually deployed and working on the reference site — don't
-     switch away from this plain-iframe method again without first diffing
-     against that site's live HTML/headers, the way this was resolved. -->
+     reference, which uses this exact method (plain iframe to
+     whop.com/checkout/{plan}, no js.whop.com or cdn.whop.com script) and has
+     working wallets. The iframe has no static src in this markup: main.js's
+     initCheckoutModal() sets it, picking between two separate Whop plans
+     (one Spanish, one English — same product, each with its own
+     title/description set on Whop's side) based on currentLang.
+     whop.com/embedded/checkout/{plan}?locale={es|en} was tried twice
+     instead (it's the only Whop path that honors ?locale=) — both times it
+     rendered with no product name/description/price/wallets at all,
+     confirmed both as a direct nav AND actually embedded in this exact
+     iframe. Don't go back to it, and don't reintroduce js.whop.com's
+     loader.js or cdn.whop.com's Elements widget either — both were tried
+     and abandoned earlier for the same reason (broken or missing wallets). -->
 <div class="checkout-modal" data-checkout-modal hidden>
   <div class="checkout-modal-backdrop" data-checkout-modal-backdrop></div>
   <div class="checkout-modal-panel" role="dialog" aria-modal="true" data-i18n-aria="a11y.checkoutDialog" aria-label="Pago">
@@ -1293,7 +1304,7 @@
         <span class="checkout-spinner"></span>
         <span data-i18n="checkout.loading">Cargando pago…</span>
       </div>
-      <iframe src="https://whop.com/checkout/plan_GLifvy5XFV15e" title="Checkout" allow="payment"></iframe>
+      <iframe title="Checkout" allow="payment"></iframe>
     </div>
   </div>
 </div>
