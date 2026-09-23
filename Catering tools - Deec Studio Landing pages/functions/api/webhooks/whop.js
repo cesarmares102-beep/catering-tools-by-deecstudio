@@ -207,6 +207,16 @@ async function sendPurchaseToMeta(payment, env) {
     ],
   };
 
+  // Optional, env-driven only — never hardcoded. Set META_TEST_EVENT_CODE
+  // in Cloudflare (Settings → Variables) while testing against Meta's
+  // "Test Events" tab so sandbox/test purchases don't land in real
+  // campaign attribution data; delete that one variable afterward to
+  // stop tagging events as test — no code change or redeploy needed
+  // either way.
+  if (env.META_TEST_EVENT_CODE) {
+    body.test_event_code = env.META_TEST_EVENT_CODE;
+  }
+
   const url =
     "https://graph.facebook.com/" +
     META_API_VERSION +
