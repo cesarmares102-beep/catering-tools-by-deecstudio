@@ -3,3 +3,6 @@
 # Apple Pay merchant domain-association file.
 !.well-known
 !.well-known/**
+functions/
+dist_worker/
+wrangler.jsonc
