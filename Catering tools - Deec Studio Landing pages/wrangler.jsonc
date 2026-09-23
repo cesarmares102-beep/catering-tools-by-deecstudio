@@ -12,5 +12,11 @@
   "vars": {
     "META_DATASET_ID": "1068830012634174",
     "META_TEST_EVENT_CODE": "TEST93839"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
   }
 }
