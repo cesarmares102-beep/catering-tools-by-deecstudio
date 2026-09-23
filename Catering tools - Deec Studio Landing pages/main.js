@@ -132,6 +132,21 @@
 
     function open(e) {
       if (e) e.preventDefault();
+      // Meta Pixel "InitiateCheckout" — the conversion event for this
+      // campaign (Sales → Website), fired on checkout-intent click. NOT
+      // "Purchase": this plain-iframe checkout has no return URL/
+      // postMessage to know if the buyer actually paid inside Whop's
+      // iframe, so the frontend can't know a sale happened — only that
+      // someone opened the checkout. The real Purchase event is meant to
+      // come from Whop server-side (Conversions API) on its own
+      // payment.succeeded webhook, not from this page. Don't add an
+      // fbq("track","Purchase",...) call here without that server-side
+      // piece existing — see the conversation this was set up in.
+      // Guarded so a blocked/failed-to-load pixel can't break the
+      // checkout modal itself from opening.
+      try {
+        if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 49.99, currency: "USD" });
+      } catch (err) { if (window.console) console.warn("[fbq InitiateCheckout]", err); }
       syncCheckoutLocale();
       modal.hidden = false;
       document.body.style.overflow = "hidden";

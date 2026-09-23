@@ -9,21 +9,31 @@
 # "; preload" — that submits the domain to browsers' hardcoded preload
 # list, which is far harder to reverse than this header alone.
 #
-# script-src allowlists ONE specific inline script by its SHA-256 hash
-# (the Whop tracking pixel in index.html's <head>) instead of using
-# 'unsafe-inline' — every OTHER inline script stays blocked, which is
-# what makes this site's XSS surface a non-issue. Edit that snippet and
-# this hash goes stale (recompute it and update here + .htaccess, or the
-# pixel silently stops loading). https://t.whop.tw is that pixel's own
-# domain (loads s.js, sends tracking events) — a different Whop subdomain
-# from the checkout iframe's whop.com.
+# script-src allowlists specific inline scripts by their SHA-256 hash
+# (the Whop + Meta Pixel base snippets in index.html's <head>) instead of
+# using 'unsafe-inline' — every OTHER inline script stays blocked, which
+# is what makes this site's XSS surface a non-issue. Edit either snippet
+# and its hash goes stale (recompute it and update here + .htaccess, or
+# it's silently blocked). The Meta "Purchase" event isn't a third inline
+# script — it's called from main.js's checkout click handler, which is
+# already trusted via script-src 'self', so it needed no separate hash.
+# https://t.whop.tw is Whop's tracking domain (loads s.js, sends events).
+# https://connect.facebook.net/https://www.facebook.com are Meta's (loads
+# fbevents.js, sends events, serves the <noscript> fallback pixel image).
+# facebook.com is also in frame-src/form-action: fbevents.js falls back to
+# a hidden iframe/form POST to deliver events when its primary fetch/image
+# beacon is blocked (privacy modes, some browsers) — confirmed by testing,
+# not guessed. Some other random-looking third-party domains (AWS/GCP
+# hostnames) showed up as blocked connect-src attempts during testing —
+# NOT allowlisted here on purpose, they don't look like standard Meta
+# infrastructure and weren't verified as legitimate.
 
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(self "https://whop.com")
   X-Frame-Options: SAMEORIGIN
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-Vj0ZQI6HmRlgG8PCxGgAq25M62GE2IwjbyWbU26rh4Y=' https://t.whop.tw; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com; img-src 'self' data:; frame-src https://whop.com; connect-src 'self' https://whop.com https://t.whop.tw; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-Vj0ZQI6HmRlgG8PCxGgAq25M62GE2IwjbyWbU26rh4Y=' 'sha256-8MexTA4cl23iH+k1us9OYTnOJCky1DyRUzZ+Stho6v4=' https://t.whop.tw https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com; frame-src https://whop.com https://www.facebook.com; connect-src 'self' https://whop.com https://t.whop.tw https://www.facebook.com https://connect.facebook.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://www.facebook.com; object-src 'none'
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 /*.html

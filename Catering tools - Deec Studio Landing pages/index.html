@@ -14,7 +14,7 @@
      hit this specific request. See also the css/js Cache-Control in
      _headers/.htaccess (stale-while-revalidate/stale-if-error) for the
      other half of this fix. -->
-<link rel="stylesheet" href="styles.css?v=20260921j" />
+<link rel="stylesheet" href="styles.css?v=20260921l" />
 
 <!-- Whop tracking pixel (conversion/attribution for the checkout funnel).
      CSP script-src is 'self' only with no 'unsafe-inline' — this exact
@@ -27,6 +27,37 @@
      silently blocked. t.whop.tw is also allowlisted in script-src (loads
      s.js) and connect-src (sends tracking events). -->
 <script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_z27YXAf3J61uO9");whop.track("page");</script>
+
+<!-- Meta Pixel Code — base snippet + PageView only. Same hash-allowlist
+     approach as the Whop pixel above (no 'unsafe-inline'). The
+     conversion event for this campaign, "InitiateCheckout", is NOT a
+     second inline <script> — it's called from main.js's checkout click
+     handler instead (main.js is already trusted via script-src 'self',
+     so no extra CSP entry was needed for that part). Do NOT add a
+     "Purchase" event here or in main.js: this plain-iframe checkout has
+     no way to know if a payment actually succeeded inside Whop's iframe,
+     so Purchase is meant to come from Whop server-side (Conversions API)
+     on its own payment.succeeded webhook instead. Edit so much as a
+     character of THIS block and its hash in _headers/.htaccess needs
+     recomputing or it's silently blocked. connect.facebook.net/
+     www.facebook.com are allowlisted in script-src/img-src/connect-src/
+     frame-src/form-action for fbevents.js and its tracking beacons. -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1068830012634174');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1068830012634174&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <title>CateringTools — Tu cotizador web personalizado para catering</title>
 <meta name="description" content="CateringTools convierte tus servicios, precios y reglas de cobro en una herramienta que genera presupuestos y cotizaciones profesionales en minutos. Pago único de $49.99 USD, sin suscripciones." />
@@ -1337,8 +1368,8 @@
   </div>
 </div>
 
-<script defer src="lib/manifest.js?v=20260921j"></script>
-<script defer src="lib/i18n.js?v=20260921j"></script>
-<script defer src="main.js?v=20260921j"></script>
+<script defer src="lib/manifest.js?v=20260921l"></script>
+<script defer src="lib/i18n.js?v=20260921l"></script>
+<script defer src="main.js?v=20260921l"></script>
 </body>
 </html>
